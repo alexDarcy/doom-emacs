@@ -72,9 +72,10 @@
    :m "gs" nil
    :m "à" evilem-map
    (:map evilem-map
-     "s" 'evilem-motion-previous-line
+     "s" 'evilem-motion-previous-line ; Quite useful
      "t" 'evilem-motion-next-line
-     "c" #'evil-avy-goto-char-2 ;; Jump two characters <3
+     "c" #'evil-avy-goto-char-2 ;; Jump two characters <3. I should use it more
+     "m" #'evil-avy-goto-word-1 ;; evil forward word is limited to the current line. This is quite powerful
      ))
 
 
