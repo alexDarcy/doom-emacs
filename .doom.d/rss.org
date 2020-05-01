@@ -1,0 +1,17 @@
+# Configuration for rss flux with elfeed. Beware, you need the elfeed tags,
+# othewrise the tree will be skipped !!
+* News :news:elfeed:
+** France :fr:
+*** https://www.mediapart.fr/articles/feed :mediapart:
+*** https://www.lemonde.fr/rss/une.xml :lemonde:
+*** https://www.lefigaro.fr/rss/figaro_actualites.xml :figaro:
+** English :en:
+*** http://feeds.bbci.co.uk/news/rss.xml?edition=uk :bbc:
+*** https://rss.nytimes.com/services/xml/rss/nyt/HomePage.xml :nyt:
+*** http://rss.time.com/web/time/rss/top/index.xml :time:
+** German :de:
+*** https://www.spiegel.de/schlagzeilen/tops/index.rss :spiegel:
+** Japanese :ja:
+*** http://rss.asahi.com/rss/asahi/newsheadlines.rdf :asahi:
+* Tech :tech:elfeed:
+*** https://news.ycombinator.com/rss :ycombinator:
