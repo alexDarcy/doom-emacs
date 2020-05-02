@@ -76,6 +76,10 @@
      "t" 'evilem-motion-next-line
      "c" #'evil-avy-goto-char-2 ;; Jump two characters <3. I should use it more
      "m" #'evil-avy-goto-word-1 ;; evil forward word is limited to the current line. This is quite powerful
+     "««"  'evilem-motion-backward-section-begin
+     "«»"  'evilem-motion-backward-section-end
+     "»«"  'evilem-motion-forward-section-begin
+     "»»"  'evilem-motion-forward-section-begin
      ))
 
 
@@ -102,6 +106,13 @@
    :nm "j" 'ranger-toggle-mark
    ; & is clumsy on bepo
    :map ranger-dired-map "è" 'dired-do-async-shell-command
+   )
+
+ (:after org
+   :nm "««"  'evil-backward-section-begin
+   :nm "«»"  'evil-backward-section-end
+   :nm "»«"  'evil-forward-section-begin
+   :nm "»»"  'evil-forward-section-begin
    )
 
 ;;-------------------------------------------------------------------------------

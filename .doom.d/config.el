@@ -10,6 +10,8 @@
 (load! "+mail") ; Mail configuration
 (load! "+org") ; Org configuration
 
+(setq doom-solarized-dark-brighter-comments t)
+
 ;; Projectile
 (map!
  (:leader
@@ -19,6 +21,9 @@
    )
  )
 
+;; French
+(setq calendar-week-start-day 1)
+(setq ispell-dictionary "fr_FR")
 
 ; TODO : activate more properly ? Doom is lazy
 ;; Sometimes magit ask for SSH passphrase... Use keychain to avoid that
