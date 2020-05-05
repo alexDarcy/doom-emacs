@@ -3,14 +3,15 @@
 ;; Warning: using emacs daemon + emacsclient -nc lose the highlight. So we need
 ;; to reload the theme each time we start a new emacs.
 ;; SPC h r t (or M-x doom/reload-theme)
-(load-theme 'doom-solarized-dark)
+(load-theme 'doom-one t)
 
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+mail") ; Mail configuration
 (load! "+org") ; Org configuration
+(load! "+torrents") ; Org configuration
 
-(setq doom-solarized-dark-brighter-comments t)
+;; (setq doom-solarized-dark-brighter-comments t)
 
 ;; Projectile
 (map!
@@ -23,7 +24,7 @@
 
 ;; French
 (setq calendar-week-start-day 1)
-(setq ispell-dictionary "fr_FR")
+(setq ispell-dictionary "fr")
 
 ; TODO : activate more properly ? Doom is lazy
 ;; Sometimes magit ask for SSH passphrase... Use keychain to avoid that
@@ -139,7 +140,3 @@
 ;;   (setq-default elfeed-search-filter "@2-days-ago +unread ")
 ;; )
 
-;; read torrents from rtorrent daemon
-(after! mentor
-  :init
-  (setq mentor-rtorrent-external-rpc "/torrents/rtorrent.sock"))
