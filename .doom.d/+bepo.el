@@ -23,6 +23,11 @@
  :nm "L" 'evil-change-line
  :nm "c" 'evil-backward-char
  :nm "r" 'evil-forward-char
+ ;; Jump to section
+ :nm "««"  'evil-backward-section-begin
+ :nm "«»"  'evil-backward-section-end
+ :nm "»«"  'evil-forward-section-begin
+ :nm "»»"  'evil-forward-section-begin
 
  ;;-------------------------------------------------------------------------------
  ;; Evil-snipe : must be done before other t-s remapping below
@@ -85,8 +90,10 @@
      "»«"  'evilem-motion-forward-section-begin
      "»»"  'evilem-motion-forward-section-begin
      ))
-
-
+ (:after
+   ;; Jump to section
+   :nm "««"  'org-previous-visible-heading
+   :nm "»»"  'org-next-visible-heading)
  ;;-------------------------------------------------------------------------------
  ;; Workspace (like eyebrowse)
  ;;-------------------------------------------------------------------------------
@@ -104,20 +111,20 @@
  ;; :m "," ranger-dired-map
  (:after ranger
    :m "," ranger-dired-map
-   :map ranger-mode-map
-   :nm "t" 'evil-next-line
-   :nm "s" 'evil-previous-line
-   :nm "j" 'ranger-toggle-mark
+   (:map ranger-mode-map
+    "t" 'evil-next-line
+    "s" 'evil-previous-line
+    "j" 'ranger-toggle-mark)
    ; & is clumsy on bepo
    :map ranger-dired-map "è" 'dired-do-async-shell-command
    )
 
- (:after org
-   :nm "««"  'evil-backward-section-begin
-   :nm "«»"  'evil-backward-section-end
-   :nm "»«"  'evil-forward-section-begin
-   :nm "»»"  'evil-forward-section-begin
-   )
+
+ (:after ledger
+  :map ledger-mode-map
+  :nm "»»"  'ledger-navigate-next-xact-or-directive
+  :nm "««"  'ledger-navigate-prev-xact-or-directive
+  )
 
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu

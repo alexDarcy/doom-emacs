@@ -22,8 +22,7 @@
   (map! :leader
         ;; Easier access to agenda
         (:prefix "o"
-          :desc "Org Agenda" "a" #'org-agenda-list
-          :desc "Org Agenda and Notes" "A" #'+show-agenda)
+          :desc "Org Agenda" "a" #'org-agenda-list)
 
         ;; Remap org capture (bepo)
         "X" nil
@@ -33,6 +32,17 @@
         :localleader
         "x" #'org-toggle-checkbox
         )
+
+  (require 'calfw)
+  (require 'calfw-org)
+  ;; Hack :  Use calfw to show only studying
+  (defun study-calendar()
+    (interactive)
+    (cfw:open-calendar-buffer
+     :contents-sources
+     (list
+      (cfw:org-create-file-source "revisions" "~/projects/tasks/revisions.org" "Orange")
+      )))
 
   ;; Focus on studying
   ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
@@ -53,6 +63,7 @@
            )
           ((org-agenda-filter-preset '("-revisions")))
           )))
+
 
   ;; Play a sound when using a timer (org-timer-set-timer)
   (setq org-clock-sound "~/.doom.d/bell.wav")
@@ -110,10 +121,10 @@ Front split : %^{Front split}")
           ("w" "Workout" entry (file+datetree "~/projects/tasks/workout.org")
            "* Workout
 Warm-up : %^{Warm-up}
-Muscle-up : %^{Muscle-up}
+Muscle-up (négatifs lents) : %^{Muscle-up}
 Pistols (assisted) : %^{Pistols}
-Front-lever row (tucked) : %^{Rows}
-Planche tucked push-up: %^{Planche tucked}
+Front-lever row (advanced tuck) : %^{Rows}
+Planche push-up (advanced tuck): %^{Planche tucked}
 Extension (lower-back) : %^{Extension}
 Compression : %^{Compression}
 L-sit : %^{L-sit}")
@@ -147,7 +158,6 @@ L-sit : %^{L-sit}")
         helm-bibtex-bibliography "~/projects/blog/library/references.bib"
         helm-bibtex-library-path "~/projects/blog/library/pdfs"
         helm-bibtex-notes-path "~/projects/blog/library/books.org"))
-
 
 (require 'om)
 ;; -----------------------------------------

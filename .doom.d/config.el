@@ -4,6 +4,7 @@
 ;; to reload the theme each time we start a new emacs.
 ;; SPC h r t (or M-x doom/reload-theme)
 (load-theme 'doom-one t)
+(setq doom-one-brighter-comments t) ;; We want the comments visible
 
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
@@ -11,7 +12,6 @@
 (load! "+org") ; Org configuration
 (load! "+torrents") ; Org configuration
 
-;; (setq doom-solarized-dark-brighter-comments t)
 
 ;; Projectile
 (map!
@@ -91,7 +91,8 @@
   (map!
    (:leader
      (:prefix "o"
-       (:desc "Chat (bitlbee)" "c" 'bitlbee-start))))
+       (:desc "Chat (bitlbee)" "c" 'bitlbee-start)
+       (:desc "Gnus" "g" 'gnus))))
   :config
   ;; Autojoin must be done inside bitlbee directly
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
