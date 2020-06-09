@@ -16,10 +16,10 @@
 ;; Projectile
 (map!
  (:leader
-   (:prefix-map ("p" . "project")
-     :desc "Rg"               "g" #'counsel-projectile-rg
-     )
+  (:prefix-map ("p" . "project")
+   :desc "Rg"               "g" #'counsel-projectile-rg
    )
+  )
  )
 
 ;; French
@@ -44,21 +44,21 @@
   (setq eshell-prefer-lisp-functions t)
   ;; Aliases do not seem to be written on file...
   (set-eshell-alias!
-    "sudo"  "eshell/sudo $*")
+   "sudo"  "eshell/sudo $*")
 
-;;   ;; Fish completion in eshell.
-;;   ;; The doc tells us to use "nil t" as argument but it does not work in doom...
-;;   (when (and (executable-find "fish")
-;;              (require 'fish-completion)
-;;              (global-fish-completion-mode))))
+  ;;   ;; Fish completion in eshell.
+  ;;   ;; The doc tells us to use "nil t" as argument but it does not work in doom...
+  ;;   (when (and (executable-find "fish")
+  ;;              (require 'fish-completion)
+  ;;              (global-fish-completion-mode))))
   )
 
 ;; Emms.
 ;; NB : :commands allow to load emms only when needed. Also `(require)' is replaced by def-package
 (map!
-   (:leader
-     (:prefix-map ("o" . "open")
-       (:desc "Emms" "m" #'emms))))
+ (:leader
+  (:prefix-map ("o" . "open")
+   (:desc "Emms" "m" #'emms))))
 
 (use-package! emms-setup
   :commands (emms)
@@ -73,9 +73,9 @@
   :config
   (setq lsp-haskell-process-path-hie "ghcide")
   (setq lsp-haskell-process-args-hie '())
- ;; Comment/uncomment this line to see interactions between lsp client/server.
+  ;; Comment/uncomment this line to see interactions between lsp client/server.
   ;;(setq lsp-log-io t)
-)
+  )
 
 ;; ---- ERC
 ;; A helper function to auto-start bitlbee
@@ -90,15 +90,22 @@
   :init
   (map!
    (:leader
-     (:prefix "o"
-       (:desc "Chat (bitlbee)" "c" 'bitlbee-start)
-       (:desc "Gnus" "g" 'gnus))))
+    (:prefix "o"
+     (:desc "Chat (bitlbee)" "c" 'bitlbee-start)
+     (:desc "Gnus" "g" 'gnus))))
   :config
   ;; Autojoin must be done inside bitlbee directly
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
-)
+  )
 
-; Circe + bitlbee does not work
+;; Deft to manage notes
+(setq deft-directory "~/projects/blog/notes")
+(setq deft-extensions '("org"))
+
+;; disable smar parens in org mode due to lag
+(add-hook 'org-mode-hook #'turn-off-smartparens-mode)
+
+                                        ; Circe + bitlbee does not work
 ;; (after! irc
 ;;    (set-irc-server! "Bitlbee"
 ;;      '(:host "localhost" :port 6667
@@ -120,8 +127,6 @@
 ;;       :nickserv-identify-confirmation "Password accepted, settings and accounts loaded"
 ;;       :lagmon-disabled t))))
 
-;; disable smar parens in org mode due to lag
-(add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 
 
 ;; Japanes input

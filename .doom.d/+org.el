@@ -5,11 +5,10 @@
 ;;-------------------------------------------------------------------------------
 (after! org
   ;; My agenda files
-  (setq org-agenda-files (list "~/projects/tasks/revisions.org"
-                               "~/projects/tasks/todo.org"
-                               "~/projects/library/reading-list.org")
-        ;; Important : agenda view does not show tasks with imcomplete parents in Doom
-        org-agenda-dim-blocked-tasks nil)
+  (setq org-agenda-files (list "~/projects/blog/notes/revisions.org"
+                               "~/projects/blog/notes/todo.org")
+        ;; Important : agenda view does not show notes with imcomplete parents in Doom
+        org-agenda-dim-blocked-notes nil)
 
   ;; Manage link to mail in gnus
   (add-to-list 'org-modules 'ol-gnus)
@@ -22,7 +21,7 @@
   (map! :leader
         ;; Easier access to agenda
         (:prefix "o"
-          :desc "Org Agenda" "a" #'org-agenda-list)
+         :desc "Org Agenda" "a" #'org-agenda-list)
 
         ;; Remap org capture (bepo)
         "X" nil
@@ -41,29 +40,32 @@
     (cfw:open-calendar-buffer
      :contents-sources
      (list
-      (cfw:org-create-file-source "revisions" "~/projects/tasks/revisions.org" "Orange")
+      (cfw:org-create-file-source "revisions" "~/projects/blog/notes/revisions.org" "Orange")
       )))
 
   ;; Focus on studying
   ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
   (setq org-agenda-custom-commands
-      '(("r" "Revisions"
-         ((agenda "" ((org-agenda-span 'day)
-                      (org-agenda-start-day "today")))
-          (agenda "" ((org-agenda-start-day "+1d")
-                      (org-deadline-warning-days 0)
-                      (org-agenda-skip-deadline-if-done t)))
-          )
-         ((org-agenda-filter-preset '("+revisions")))
-         )
-      ("o" "Others view"
-          ((agenda "" ((org-agenda-start-day "today")
-                      (org-deadline-warning-days 0)
-                      (org-agenda-skip-deadline-if-done t)))
+        '(("r" "Revisions"
+           ((agenda "" ((org-agenda-span 14)
+                        (org-agenda-start-day "today")
+                        (org-deadline-warning-days 0)
+                        (org-agenda-skip-deadline-if-done t)))
+            )
+           ((org-agenda-filter-preset '("+revisions")))
            )
-          ((org-agenda-filter-preset '("-revisions")))
-          )))
+          ("o" "Others view"
+           ((agenda "" ((org-agenda-start-day "today")
+                        (org-deadline-warning-days 0)
+                        (org-agenda-skip-deadline-if-done t)))
+            )
+           ((org-agenda-filter-preset '("-revisions")))
+           )))
 
+                                        ; Remove religious holidays
+  (setq holiday-bahai-holidays nil
+        holiday-hebrew-holidays nil
+        holiday-islamic-holidays nil)
 
   ;; Play a sound when using a timer (org-timer-set-timer)
   (setq org-clock-sound "~/.doom.d/bell.wav")
@@ -72,15 +74,15 @@
   (setq org-capture-templates
         '(
           ;; Workout
-          ("h" "Handstand" entry (file+datetree "~/projects/tasks/workout.org")
+          ("h" "Handstand" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Handstand
  StW %^{StW}
  BtW %^{BtW}" )
-          ("l" "L-sit" entry (file+datetree "~/projects/tasks/workout.org")
+          ("l" "L-sit" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* L-sit
  %^{GtG}" )
           ("p" "Parkour")
-          ("pm" "Parkour (passe-muraille)" entry (file+datetree "~/projects/tasks/workout.org")
+          ("pm" "Parkour (passe-muraille)" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 Passe-muraille :
 - cat hang shimmy (each side) : %^{Cat hang shimmy}
@@ -89,10 +91,10 @@ Passe-muraille :
 - cat hang leg press (each side) : %^{Cat hang leg press}
 - cat hang pull-up (each side) : %^{Cat hang pull-up}
 - knee raises (each side) : %^{Knee raises}")
-          ("po" "Parkour (autre)" entry (file+datetree "~/projects/tasks/workout.org")
+          ("po" "Parkour (autre)" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 %^{Parkour}")
-          ("s" "Splits" entry (file+datetree "~/projects/tasks/workout.org")
+          ("s" "Splits" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Splits
 Standing splits (2-5s + rest) : %^{Standing splits}
 Wall calf : %^{Wall calf}
@@ -102,7 +104,7 @@ Horse stance : %^{Horse stance}
 Standing pancake : %^{Standing pancake}
 Front split : %^{Front split}")
           ("r" "Running")
-          ("rs" "Sprint" entry (file+datetree "~/projects/tasks/workout.org")
+          ("rs" "Sprint" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Running
 :PROPERTIES:
 :type: sprint
@@ -111,14 +113,14 @@ Front split : %^{Front split}")
 %^{sprint}p
 %^{rest}p
 ")
-          ("ro" "Other" entry (file+datetree "~/projects/tasks/workout.org")
+          ("ro" "Other" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Running
 %^{type}p
 %^{distance}p
 %^{duration}p
 %^{speed}p
 ")
-          ("w" "Workout" entry (file+datetree "~/projects/tasks/workout.org")
+          ("w" "Workout" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Workout
 Warm-up : %^{Warm-up}
 Muscle-up (négatifs lents) : %^{Muscle-up}
@@ -145,19 +147,21 @@ L-sit : %^{L-sit}")
   :after org
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite
-        reftex-default-bibliography "~/projects/blog/library/references.bib"
-        org-ref-bibliography-notes '("~/projects/blog/library/books.org"
-                                     "~/projects/blog/library/papers.org")
-        org-ref-default-bibliography '("~/projects/blog/library/references.bib")
-        org-ref-pdf-directory "~/projects/blog/library/pdfs/")
+        reftex-default-bibliography "~/projects/blog/notes/references.bib"
+        org-ref-bibliography-notes '("~/projects/blog/notes/books.org"
+                                     "~/projects/blog/notes/papers.org")
+        org-ref-default-bibliography '("~/projects/blog/notes/references.bib")
+        org-ref-pdf-directory "~/projects/blog/notes/pdfs/")
   ;; Customization : we want to insert the title of an entry in a reading list
   (push '("justtitle" . ((nil . "${title}"))) org-ref-formatted-citation-formats)
 
   ;; Helm bibtex configuration must be set
-  (setq bibtex-completion-library-path '("~/projects/blog/library/pdfs")
-        helm-bibtex-bibliography "~/projects/blog/library/references.bib"
-        helm-bibtex-library-path "~/projects/blog/library/pdfs"
-        helm-bibtex-notes-path "~/projects/blog/library/books.org"))
+  (setq bibtex-completion-library-path '("~/projects/blog/notes/pdfs")
+        helm-bibtex-bibliography "~/projects/blog/notes/references.bib"
+        helm-bibtex-library-path "~/projects/blog/notes/pdfs"
+        helm-bibtex-notes-path "~/projects/blog/notes/books.org"
+        ;; Do not open on default
+        ivy-bibtex-default-action 'ivy-bibtex-edit-notes))
 
 (require 'om)
 ;; -----------------------------------------
@@ -186,4 +190,9 @@ L-sit : %^{L-sit}")
            (om-headline-map-node-property "ECNI" (function increment-number)))
       )
     )
-)
+
+  ;; track habits
+  (add-to-list 'org-modules 'habits)
+
+
+  )
