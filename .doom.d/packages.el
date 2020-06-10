@@ -11,6 +11,7 @@
 (package! org-chef) ; Input in japanese
 (package! org-ref) ;; Manage a reading list. Error with void function....
 (package! projectile-ripgrep) ; I like ripgrep
+(package! zetteldeft) ; I like ripgrep
 
 ;;; Examples:
 
