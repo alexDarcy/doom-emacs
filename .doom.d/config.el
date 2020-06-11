@@ -98,51 +98,8 @@
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
 
-;; ----- Deft to manage notes
-(after! deft
-  :config
-  (setq deft-directory "~/projects/blog/notes")
-  (setq deft-extensions '("org"))
-  ;; BUG in title with zetteldeft
-  ;; 1. id is in the title
-  ;; https://github.com/EFLS/zetteldeft/issues/41
-  ;; TODO : there is still a space in the filename... (cf github issue)
-  (setq deft-file-naming-rules '((noslash . "-")))
-  ;; 2. Conflicts with doom : duplicate title
-  (set-file-template! 'org-mode :ignore t))
-
-;; Zetteldeft on top of deft
-(use-package zetteldeft
-  :ensure t
-  :after deft
-  :init
-  (map! :leader
-        :prefix ("d" . "zetteldeft")
-        :desc "deft" "d" #'deft
-        :desc "zetteldeft-deft-new-search" "D" #'zetteldeft-new-file
-        :desc "deft-refresh" "R" #'deft-refresh
-        :desc "zetteldeft-search-at-point" "s" #'zetteldeft-search-at-point
-        :desc "zetteldeft-search-current-id" "c" #'zetteldeft-search-current-id
-        :desc "zetteldeft-follow-link" "f" #'zetteldeft-follow-link
-        :desc "zetteldeft-avy-file-search-ace-window" "F" #'zetteldeft-avy-file-search-ace-window
-        :desc "zetteldeft-avy-link-search" "l" #'zetteldeft-avy-link-search
-        :desc "zetteldeft-avy-tag-search" "t" #'zetteldeft-avy-tag-search
-        :desc "zetteldeft-tag-buffer" "T" #'zetteldeft-tag-buffer
-        :desc "zetteldeft-find-file-id-insert" "i" #'zetteldeft-find-file-id-insert
-        :desc "zetteldeft-find-file-full-title-insert" "I" #'zetteldeft-find-file-full-title-insert
-        :desc "zetteldeft-find-file" "o" #'zetteldeft-find-file
-        :desc "zetteldeft-new-file" "n" #'zetteldeft-new-file
-        :desc "zetteldeft-new-file-and-link" "N" #'zetteldeft-new-file-and-link
-        :desc "zetteldeft-file-rename" "r" #'zetteldeft-file-rename
-        :desc "zetteldeft-count-words" "x" #'zetteldeft-count-words)
-  :config
-)
-
-;; disable smar parens in org mode due to lag
-(add-hook 'org-mode-hook #'turn-off-smartparens-mode)
-
 ;; Japanes input
-(require 'mozc)
+;; (require 'mozc)
 
 ;; Circe + bitlbee does not work
 ;; (after! irc
