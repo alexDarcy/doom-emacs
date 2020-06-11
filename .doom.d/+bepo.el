@@ -29,6 +29,14 @@
  :nm "»«"  'evil-forward-section-begin
  :nm "»»"  'evil-forward-section-begin
 
+ ;; Multi edit : "c" is already used
+ (:map evil-multiedit-map
+  "c" nil
+  "C" nil
+  "h" 'evil-multiedit--change
+  "H" 'evil-multiedit--substitute
+  )
+
  ;;-------------------------------------------------------------------------------
  ;; Evil-snipe : must be done before other t-s remapping below
  ;;-------------------------------------------------------------------------------

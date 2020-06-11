@@ -6,7 +6,6 @@
 (package! fish-completion) ; For eshell
 (package! keychain-environment) ;; Avoid typing SSH passphrase
 (package! mentor) ; Manage torrents from emacs
-(package! mozc) ; Input in japanese
 (package! om.el :recipe (:host github :repo "ndwarshuis/om.el"))
 (package! org-chef) ; Input in japanese
 (package! org-ref) ;; Manage a reading list. Error with void function....

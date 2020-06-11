@@ -17,7 +17,8 @@
 (map!
  (:leader
   (:prefix-map ("p" . "project")
-   :desc "Rg"               "g" #'counsel-projectile-rg
+   ;; Bug with rg (error code 2, so we default to grep)
+   :desc "Rg"               "g" #'counsel-projectile-grep
    )
   )
  )
@@ -97,9 +98,6 @@
   ;; Autojoin must be done inside bitlbee directly
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
-
-;; Japanes input
-;; (require 'mozc)
 
 ;; Circe + bitlbee does not work
 ;; (after! irc
