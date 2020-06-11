@@ -12,17 +12,6 @@
 (load! "+org") ; Org configuration
 (load! "+torrents") ; Org configuration
 
-
-;; Projectile
-(map!
- (:leader
-  (:prefix-map ("p" . "project")
-   ;; Bug with rg (error code 2, so we default to grep)
-   :desc "Rg"               "g" #'counsel-projectile-grep
-   )
-  )
- )
-
 ;; French
 (setq calendar-week-start-day 1)
 (setq ispell-dictionary "fr")
