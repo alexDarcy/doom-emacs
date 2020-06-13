@@ -10,13 +10,14 @@
         ;; Important : agenda view does not show notes with imcomplete parents in Doom
         org-agenda-dim-blocked-notes nil)
 
+  ;; track habits
+  (add-to-list 'org-modules 'habits)
+
   ;; Manage link to mail in gnus
   (add-to-list 'org-modules 'ol-gnus)
 
-  ;; Shortcut to
-  (defun toggle-checkbox-?()
-    (interactive)
-    (org-toggle-checkbox '(16)))
+  ;; disable smar parens in org mode due to lag
+  (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 
   (map! :leader
         ;; Easier access to agenda
@@ -26,10 +27,6 @@
         ;; Remap org capture (bepo)
         "X" nil
         "y" #'org-capture
-
-        :map org-mode-map
-        :localleader
-        "x" #'org-toggle-checkbox
         )
 
   (require 'calfw)
@@ -185,6 +182,11 @@ L-sit : %^{L-sit}")
   ;;    :COLLEGE: 2
   ;;    :ECNI: 2
   ;;    :END:
+  ;;
+  ;; Increment a number by 1
+  (defun increment-number(n)
+    (number-to-string (1+ (string-to-number n)))
+  )
   (defun increment-reviews()
     (interactive)
     (om-update-this-headline*
@@ -192,11 +194,14 @@ L-sit : %^{L-sit}")
            (om-headline-map-node-property "ECNI" (function increment-number)))
       )
     )
-
-  ;; track habits
-  (add-to-list 'org-modules 'habits)
-
-
+  (defun increment-college()
+    (interactive)
+    (om-update-this-headline*
+      (->> (om-headline-map-node-property "COLLEGE" (function increment-number) it))))
+  (defun increment-ecni()
+    (interactive)
+    (om-update-this-headline*
+      (->> (om-headline-map-node-property "ECNI" (function increment-number) it))))
   )
 
 
@@ -247,6 +252,3 @@ L-sit : %^{L-sit}")
         :desc "zetteldeft-count-words" "x" #'zetteldeft-count-words)
   :config
 )
-
-;; disable smar parens in org mode due to lag
-(add-hook 'org-mode-hook #'turn-off-smartparens-mode)

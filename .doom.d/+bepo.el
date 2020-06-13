@@ -37,6 +37,14 @@
   "H" 'evil-multiedit--substitute
   )
 
+ ;; Gnus : remap most used functions with 2 characters, g being the prefix
+ (:after gnus
+  :map gnus-group-mode-map
+  :nm "gr" 'gnus-group-get-new-news
+  :map gnus-summary-mode-map
+  :nm "gm" 'gnus-summary-move-article
+  )
+
  ;;-------------------------------------------------------------------------------
  ;; Evil-snipe : must be done before other t-s remapping below
  ;;-------------------------------------------------------------------------------
@@ -98,7 +106,8 @@
      "»«"  'evilem-motion-forward-section-begin
      "»»"  'evilem-motion-forward-section-begin
      ))
- (:after
+
+ (:after org
    ;; Jump to section
    :nm "««"  'org-previous-visible-heading
    :nm "»»"  'org-next-visible-heading)
