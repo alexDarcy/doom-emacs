@@ -45,6 +45,14 @@
   :nm "gm" 'gnus-summary-move-article
   )
 
+ ;; Calendar motion
+  (:map calendar-mode-map
+   :nm "r" 'calendar-forward-day
+   :nm "c" 'calendar-backward-day
+   :nm "s" 'calendar-forward-week
+   :nm "t" 'calendar-backward-week
+  )
+
  ;;-------------------------------------------------------------------------------
  ;; Evil-snipe : must be done before other t-s remapping below
  ;;-------------------------------------------------------------------------------
