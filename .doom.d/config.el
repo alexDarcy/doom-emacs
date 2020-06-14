@@ -88,6 +88,15 @@
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
 
+; No flyspell by default
+(remove-hook! '(org-mode-hook
+                markdown-mode-hook
+                TeX-mode-hook
+                rst-mode-hook
+                mu4e-compose-mode-hook
+                message-mode-hook
+                git-commit-mode-hook)
+  #'flyspell-mode)
 ;; Circe + bitlbee does not work
 ;; (after! irc
 ;;    (set-irc-server! "Bitlbee"

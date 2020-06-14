@@ -220,6 +220,8 @@ L-sit : %^{L-sit}")
   ;; 2. Conflicts with doom : duplicate title
   (set-file-template! 'org-mode :ignore t))
 
+
+
 ;; Zetteldeft on top of deft
 (use-package zetteldeft
  :commands (zetteldeft-new-file zetteldeft-tag-buffer zetteldeft-search-at-point
@@ -249,6 +251,7 @@ L-sit : %^{L-sit}")
         :desc "zetteldeft-new-file" "n" #'zetteldeft-new-file
         :desc "zetteldeft-new-file-and-link" "N" #'zetteldeft-new-file-and-link
         :desc "zetteldeft-file-rename" "r" #'zetteldeft-file-rename
-        :desc "zetteldeft-count-words" "x" #'zetteldeft-count-words)
-  :config
-)
+        :desc "zetteldeft-count-words" "x" #'zetteldeft-count-words))
+
+(require 'deft)
+(require 'zetteldeft)

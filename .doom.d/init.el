@@ -132,7 +132,7 @@
         ;;ocaml             ; an objective camel
         :lang
         (org              ; organize your plain life in plain text
-         +flyspell
+         ;+flyspell
          +dragndrop       ; file drag & drop support
          +ipython         ; ipython support for babel
          +pandoc          ; pandoc integration into org's exporter
