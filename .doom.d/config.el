@@ -4,7 +4,7 @@
 ;; to reload the theme each time we start a new emacs.
 ;; SPC h r t (or M-x doom/reload-theme)
 (load-theme 'doom-one t)
-(setq doom-one-brighter-comments t) ;; We want the comments visible
+;; (setq doom-one-brighter-comments t) ;; We want the comments visible
 
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout

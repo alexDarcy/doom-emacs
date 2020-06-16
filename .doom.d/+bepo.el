@@ -41,6 +41,7 @@
  (:after gnus
   :map gnus-group-mode-map
   :nm "gr" 'gnus-group-get-new-news
+  :nm "gf" 'nnmairix-search
   :map gnus-summary-mode-map
   :nm "gm" 'gnus-summary-move-article
   )
@@ -53,6 +54,10 @@
    :nm "t" 'calendar-backward-week
   )
 
+  (:map magit-mode-map
+   :nm "C-n" 'magit-next-line
+   :nm "C-p" 'magit-previous-line
+   )
  ;;-------------------------------------------------------------------------------
  ;; Evil-snipe : must be done before other t-s remapping below
  ;;-------------------------------------------------------------------------------
