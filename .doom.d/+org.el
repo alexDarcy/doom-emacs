@@ -12,7 +12,6 @@
 
   ;; track habits
   (add-to-list 'org-modules 'habits)
-
   ;; Manage link to mail in gnus
   (add-to-list 'org-modules 'ol-gnus)
 

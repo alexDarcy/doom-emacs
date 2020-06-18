@@ -54,6 +54,7 @@
    :nm "t" 'calendar-backward-week
   )
 
+  ;; Surprisingly overridden
   (:map magit-mode-map
    :nm "C-n" 'magit-next-line
    :nm "C-p" 'magit-previous-line
@@ -137,10 +138,8 @@
    )
 
  ;; Default prefix is '&', not convenient
- ;; ',' is used for backward caracter search but it should not be used often in dired
- ;; :m "," ranger-dired-map
  (:after ranger
-   :m "," ranger-dired-map
+   :m "ç" ranger-dired-map
    (:map ranger-mode-map
     "t" 'evil-next-line
     "s" 'evil-previous-line

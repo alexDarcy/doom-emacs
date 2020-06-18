@@ -8,9 +8,10 @@
 
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
+(load! "+dired") ; Dired/ranger configuration
 (load! "+mail") ; Mail configuration
 (load! "+org") ; Org configuration
-(load! "+torrents") ; Org configuration
+(load! "+torrents") ; mentor configuration
 
 ;; French
 (setq calendar-week-start-day 1)
@@ -48,7 +49,8 @@
 (map!
  (:leader
   (:prefix-map ("o" . "open")
-   (:desc "Emms" "m" #'emms))))
+   (:desc "Emms" "m" #'emms)
+   )))
 
 (use-package! emms-setup
   :commands (emms)
@@ -87,6 +89,7 @@
   ;; Autojoin must be done inside bitlbee directly
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
+
 
 ; No flyspell by default
 (remove-hook! '(org-mode-hook
@@ -133,6 +136,9 @@
 ;;   (setq rmh-elfeed-org-files (list "~/.doom.d/rss.org"))
 ;;   (setq-default elfeed-search-filter "@2-days-ago +unread ")
 ;; )
+(after! pdf-view
+  (setq (pdf-misc-print-programm "/usr/bin/lpr"))
+  (setq (pdf-misc-print-program-args "-PBrother_HL-1110_series")))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -142,7 +148,7 @@
  '(custom-safe-themes
    (quote
     ("229c5cf9c9bd4012be621d271320036c69a14758f70e60385e87880b46d60780" "f7b230ac0a42fc7e93cd0a5976979bd448a857cd82a097048de24e985ca7e4b2" "4a9f595fbffd36fe51d5dd3475860ae8c17447272cf35eb31a00f9595c706050" "428754d8f3ed6449c1078ed5b4335f4949dc2ad54ed9de43c56ea9b803375c23" default)))
- '(pdf-misc-print-programm "/usr/bin/lpr"))
+ )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

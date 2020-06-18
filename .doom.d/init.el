@@ -10,7 +10,7 @@
 
 (doom!  :input
         ;;chinese
-        ;;japanese
+        japanese
         ;;
 
         :checkers
@@ -63,7 +63,7 @@
         :emacs
         (dired            ; making dired pretty [functional]
          +ranger         ; bringing the goodness of ranger to dired
-        ;;+icons          ; colorful icons for dired-mode
+         +icons          ; colorful icons for dired-mode
          )
         electric          ; smarter, keyword-based electric-indent
         vc                ; version-control and Emacs, sitting in a tree
