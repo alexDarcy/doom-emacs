@@ -137,16 +137,24 @@
    "M-)"   #'+workspace/switch-to-4
    )
 
- ;; Default prefix is '&', not convenient
- (:after ranger
-   :m "ç" ranger-dired-map
-   (:map ranger-mode-map
-    "t" 'evil-next-line
-    "s" 'evil-previous-line
-    "j" 'ranger-toggle-mark)
-   ; & is clumsy on bepo
-   :map ranger-dired-map "è" 'dired-do-async-shell-command
-   )
+ (:after dired
+   (:map dired-mode-map
+    :n "t" 'evil-next-line ; Swap t <-> j
+    :n "j" 'dired-toggle-mark ; Swap t <-> j
+    :n "h" 'dired-up-directory ;; Better than ^ twice on bepo
+    :n "è" 'dired-do-async-shell-command ; & is clumsy on bepo
+   ))
+
+ ;; ;; Default prefix is '&', not convenient
+ ;; (:after ranger
+ ;;   :m "ç" ranger-dired-map
+ ;;   (:map ranger-mode-map
+ ;;    "t" 'evil-next-line
+ ;;    "s" 'evil-previous-line
+ ;;    "j" 'ranger-toggle-mark)
+ ;;   ; & is clumsy on bepo
+ ;;   :map ranger-dired-map "è" 'dired-do-async-shell-command
+ ;;   )
 
 
  (:after ledger
