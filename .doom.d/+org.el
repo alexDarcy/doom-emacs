@@ -10,34 +10,31 @@
         ;; Important : agenda view does not show notes with imcomplete parents in Doom
         org-agenda-dim-blocked-notes nil)
 
-  ;; track habits
-  (add-to-list 'org-modules 'habits)
+  (require 'org-habit)
+
   ;; Manage link to mail in gnus
   (add-to-list 'org-modules 'ol-gnus)
-
   ;; disable smar parens in org mode due to lag
   (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 
   (map! :leader
-        ;; Easier access to agenda
-        (:prefix "o"
-         :desc "Org Agenda" "a" #'org-agenda-list)
-
         ;; Remap org capture (bepo)
         "X" nil
         "y" #'org-capture
         )
 
-  (require 'calfw)
-  (require 'calfw-org)
-  ;; Hack :  Use calfw to show only studying
-  (defun study-calendar()
-    (interactive)
-    (cfw:open-calendar-buffer
-     :contents-sources
-     (list
-      (cfw:org-create-file-source "revisions" "~/projects/blog/notes/revisions.org" "Orange")
-      )))
+  ;; ;; Calfw : we need the possibility to have parents nodes for an event.
+  ;; ;; Could not figure it out
+  ;; (require 'calfw)
+  ;; (require 'calfw-org)
+  ;; ;; Hack :  Use calfw to show only studying
+  ;; (defun study-calendar()
+  ;;   (interactive)
+  ;;   (cfw:open-calendar-buffer
+  ;;    :contents-sources
+  ;;    (list
+  ;;     (cfw:org-create-file-source "revisions" "~/projects/blog/notes/revisions.org" "Orange")
+  ;;     )))
 
   ;; Focus on studying
   ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
@@ -58,7 +55,7 @@
            ((org-agenda-filter-preset '("-revisions")))
            )))
 
-                                        ; Remove religious holidays
+  ;; Remove religious holidays
   (setq holiday-bahai-holidays nil
         holiday-hebrew-holidays nil
         holiday-islamic-holidays nil)
