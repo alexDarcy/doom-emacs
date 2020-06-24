@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Org image (embedded)
+# key: oimg
+# expand-env: (((yas-wrap-around-region t))
+# --
+# --
+#+attr_html: :width 400 px
+[[ ./$1 ]]

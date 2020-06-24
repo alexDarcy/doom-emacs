@@ -100,6 +100,18 @@
                 message-mode-hook
                 git-commit-mode-hook)
   #'flyspell-mode)
+
+;; Doom disables some latex pairs, here is an example on how to enable them
+;; (after! latex
+;;   (sp-with-modes '(tex-mode
+;;                    plain-tex-mode
+;;                    latex-mode
+;;                    LaTeX-mode)
+;;     (sp-local-pair "\\left(" "\\right)"
+;;                    :trigger "\\l("
+;;                    :when '(sp-in-math-p)
+;;                    :post-handlers '(sp-latex-insert-spaces-inside-pair)))
+
 ;; Circe + bitlbee does not work
 ;; (after! irc
 ;;    (set-irc-server! "Bitlbee"
@@ -137,8 +149,11 @@
 ;;   (setq-default elfeed-search-filter "@2-days-ago +unread ")
 ;; )
 (after! pdf-view
-  (setq (pdf-misc-print-programm "/usr/bin/lpr"))
+  (setq (pdf-misc-print-program "/usr/bin/lpr"))
   (setq (pdf-misc-print-program-args "-PBrother_HL-1110_series")))
+
+;; Testing ripgrep-all
+;; (setq counsel-rg-base-command "rga -M 240 --with-filename --no-heading --line-number --color never %s")
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -150,9 +165,8 @@
     ("229c5cf9c9bd4012be621d271320036c69a14758f70e60385e87880b46d60780" "f7b230ac0a42fc7e93cd0a5976979bd448a857cd82a097048de24e985ca7e4b2" "4a9f595fbffd36fe51d5dd3475860ae8c17447272cf35eb31a00f9595c706050" "428754d8f3ed6449c1078ed5b4335f4949dc2ad54ed9de43c56ea9b803375c23" default)))
  '(package-selected-packages
    (quote
-    (dired-recent fasd bbdb speed-type fortune-cookie ranger pass org-drill org-chef nnir-est mentor lsp-haskell fish-completion circe anki-editor)))
- '(pdf-misc-print-program "/usr/bin/lpr" t)
- '(pdf-misc-print-programm "/usr/bin/lpr" t))
+    (dired-recent fasd bbdb speed-type fortune-cookie ranger pass org-drill org-chef nnir-est mentor fish-completion circe anki-editor)))
+ )
 
 ;; (custom-set-faces
 ;;  ;; custom-set-faces was added by Custom.

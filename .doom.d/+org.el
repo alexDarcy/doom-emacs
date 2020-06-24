@@ -115,14 +115,17 @@ Front split : %^{Front split}")
 ")
           ("w" "Workout" entry (file+datetree "~/projects/blog/notes/workout.org")
            "* Workout
-Warm-up : %^{Warm-up}
+RTO-up : %^{Warm-up}
+L-sit : %^{L-sit}
 Muscle-up (négatifs lents) : %^{Muscle-up}
 Pistols (assisted) : %^{Pistols}
+Extension (lower-back) : %^{Extension}
 Front-lever row (advanced tuck) : %^{Rows}
 Planche push-up (advanced tuck): %^{Planche tucked}
-Extension (lower-back) : %^{Extension}
-Compression : %^{Compression}
-L-sit : %^{L-sit}")
+Norwegian curls: %^{Curls}
+Compression : %^{Compression}"
+           )
+
           ;; ("c" "Cookbook" entry (file "~/projects/blog/notes/cooking.org") ;; Needs org-chef
           ;;  "%(org-chef-get-recipe-from-url)")
           ;; ("m" "Manual Cookbook" entry (file "~/org/cookbook.org")
