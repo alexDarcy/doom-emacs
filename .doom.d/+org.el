@@ -23,6 +23,10 @@
         "y" #'org-capture
         )
 
+  ;; Trying org-rifle as an alternative to zetteldeft: use
+  ;; helm-org-rifle-org-directory to search notes
+  (setq org-directory "~/projects/blog/notes")
+
   ;; ;; Calfw : we need the possibility to have parents nodes for an event.
   ;; ;; Could not figure it out
   ;; (require 'calfw)
