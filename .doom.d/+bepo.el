@@ -109,11 +109,13 @@
    :m "à" evilem-map
    ;; Motions i use : jump to char, char2, word and line
    (:map evilem-map
-     "t" #'evilem-motion-next-line ;; jumps directly above the cursor if possible
+     "t" #'evilem-motion-next-line ; jumps directly above the cursor if possible
      "s" #'evilem-motion-previous-line
-     "l" #'evil-avy-goto-line ;; jump to the beginning of line
-     "c" #'evil-avy-goto-char-2 ;; Jump two characters <3. I should use it more
-     "m" #'evil-avy-goto-word-1 ;; evil forward word is limited to the current line. This is quite powerful
+     "l" #'evil-avy-goto-line ; jump to the beginning of line
+     "c" #'evil-avy-goto-char-2 ; Jump two characters <3. I should use it more
+     "m" #'evil-avy-goto-word-1 ; evil forward word is limited to the current
+                                        ;line. This is quite powerful. "m" as in "match"
+     "d" #'avy-move-line ; "d" as in "displace"
      ;; Jump spections
      "««"  'evilem-motion-backward-section-begin
      "«»"  'evilem-motion-backward-section-end

@@ -11,7 +11,7 @@
 (package! org-ref) ;; Manage a reading list. Error with void function....
 (package! helm-org-rifle) ;; Search org files easily
 (package! projectile-ripgrep) ; I like ripgrep
-(package! zetteldeft) ; I like ripgrep
+(package! zetteldeft) ; manage Note-taking
 
 ;;; Examples:
 

@@ -71,15 +71,15 @@
   (setq org-capture-templates
         '(
           ;; Workout
-          ("h" "Handstand" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("h" "Handstand" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Handstand
  StW %^{StW}
  BtW %^{BtW}" )
-          ("l" "L-sit" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("l" "L-sit" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* L-sit
  %^{GtG}" )
           ("p" "Parkour")
-          ("pm" "Parkour (passe-muraille)" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("pm" "Parkour (passe-muraille)" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 Passe-muraille :
 - cat hang shimmy (each side) : %^{Cat hang shimmy}
@@ -88,10 +88,10 @@ Passe-muraille :
 - cat hang leg press (each side) : %^{Cat hang leg press}
 - cat hang pull-up (each side) : %^{Cat hang pull-up}
 - knee raises (each side) : %^{Knee raises}")
-          ("po" "Parkour (autre)" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("po" "Parkour (autre)" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 %^{Parkour}")
-          ("s" "Splits" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("s" "Splits" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Splits
 Standing splits (2-5s + rest) : %^{Standing splits}
 Wall calf : %^{Wall calf}
@@ -101,7 +101,7 @@ Horse stance : %^{Horse stance}
 Standing pancake : %^{Standing pancake}
 Front split : %^{Front split}")
           ("r" "Running")
-          ("rs" "Sprint" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("rs" "Sprint" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Running
 :PROPERTIES:
 :type: sprint
@@ -110,14 +110,14 @@ Front split : %^{Front split}")
 %^{sprint}p
 %^{rest}p
 ")
-          ("ro" "Other" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("ro" "Other" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Running
 %^{type}p
 %^{distance}p
 %^{duration}p
 %^{speed}p
 ")
-          ("w" "Workout" entry (file+datetree "~/projects/blog/notes/workout.org")
+          ("w" "Workout" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Workout
 RTO-up : %^{Warm-up}
 L-sit : %^{L-sit}
