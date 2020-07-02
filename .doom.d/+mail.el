@@ -19,10 +19,10 @@
   (setq sendmail-program  "/usr/bin/msmtp"
         notmuch-archive-tags '("-inbox" "-unread" "+archived")
         notmuch-saved-searches '(
-                                 (:name "inbox"   :query "tag:inbox "    :key "i")
-                                 (:name "sent"    :query "tag:sent"      :key "s")
-                                 (:name "archived":query "tag:archived"  :key "a")
-                                 (:name "drafts"  :query "tag:draft"     :key "d"))
+                                 (:name "inbox"   :query "tag:inbox "    :key "i" :search-type 'tree)
+                                 (:name "sent"    :query "tag:sent"      :key "s" :search-type 'tree)
+                                 (:name "archived":query "tag:archived"  :key "a" :search-type 'tree)
+                                 (:name "drafts"  :query "tag:draft"     :key "d" :search-type 'tree))
         ;; Disable colors to use default (easier on the eyes)
         shr-use-colors nil)
 

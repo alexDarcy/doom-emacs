@@ -117,6 +117,12 @@ Front split : %^{Front split}")
 %^{duration}p
 %^{speed}p
 ")
+          ("t" "Tricks" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
+"* Tricks
+Kip up : %^{kip-up}
+Back flip : %^{backflip}
+Front flip : %^{frontflip}
+Front handspring : : %^{front handspring}")
           ("w" "Workout" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Workout
 RTO-up : %^{Warm-up}
@@ -148,19 +154,22 @@ Compression : %^{Compression}"
   :after org
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite
-        reftex-default-bibliography "~/projects/blog/notes/references.bib"
+        reftex-default-bibliography '("~/projects/blog/notes/references.bib"
+                                       "~/projects/sir/references.bib")
         org-ref-bibliography-notes '("~/projects/blog/notes/books.org"
                                      "~/projects/blog/notes/papers.org")
-        org-ref-default-bibliography '("~/projects/blog/notes/references.bib")
+        org-ref-default-bibliography '("~/projects/blog/notes/references.bib"
+                                       "~/projects/sir/references.bib")
         org-ref-pdf-directory "~/projects/blog/notes/pdfs/")
   ;; Customization : we want to insert the title of an entry in a reading list
   (push '("justtitle" . ((nil . "${title}"))) org-ref-formatted-citation-formats)
 
   ;; Helm bibtex configuration must be set
   (setq bibtex-completion-library-path '("~/projects/blog/notes/pdfs")
-        helm-bibtex-bibliography "~/projects/blog/notes/references.bib"
-        helm-bibtex-library-path "~/projects/blog/notes/pdfs"
-        helm-bibtex-notes-path "~/projects/blog/notes/books.org"
+        bibtex-completion-bibliography '("~/projects/blog/notes/references.bib"
+                                       "~/projects/sir/references.bib")
+        bibtex-completion-library-path "~/projects/blog/notes/pdfs"
+        bibtex-completion-notes-path "~/projects/blog/notes/books.org"
         ;; Do not open on default
         ivy-bibtex-default-action 'ivy-bibtex-edit-notes))
 

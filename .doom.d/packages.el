@@ -12,7 +12,8 @@
 (package! helm-org-rifle) ;; Search org files easily
 (package! projectile-ripgrep) ; I like ripgrep
 (package! zetteldeft) ; manage Note-taking
-
+(package! ob-async) ; Execute code block asynchronsly
+;; (package! docker-tramp) ; TRAMP request in docker (also used for org mode  code blocks)
 ;;; Examples:
 
 ;; (package! another-package :recipe (:fetcher github :repo "username/repo"))

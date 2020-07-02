@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: org-block-shell
+# uuid:
+# key: osh
+# condition: t
+# --
+
+#+BEGIN_SRC shell
+$1
+#+END_SRC
