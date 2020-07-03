@@ -46,6 +46,24 @@
   :nm "gm" 'gnus-summary-move-article
   )
 
+ ;; Evil navigation in notmuch
+ (:after notmuch
+  :map notmuch-common-keymap
+  :nm "gr" #'notmuch-refresh-this-buffer
+  :nm "k" #'notmuch-search
+  :nm "K" #'notmuch-tree
+
+  :map notmuch-search-mode-map
+  ;; "s"/"t" conflict with evil prev/next line
+  ;; easiest way is to swap with "j"/"k"
+  :nm "t" 'evil-next-line
+  :nm "k" #'notmuch-search
+  :nm "s" 'evil-previous-line
+  :nm "j" #'notmuch-search-filter-by-tag
+  )
+
+;; #'notmuch-search-filter-by-tag
+
  ;; Calendar motion
   (:map calendar-mode-map
    :nm "r" 'calendar-forward-day
