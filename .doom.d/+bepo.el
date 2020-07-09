@@ -1,6 +1,7 @@
 ;;;  -*- lexical-binding: t; -*-
 ;; Description: We must rebindng quite some binding to adapt to the bepo layout
 
+
 ;;-------------------------------------------------------------------------------
  ;; Global movement j, k <-> t,s
 ;;-------------------------------------------------------------------------------
@@ -35,6 +36,13 @@
   "C" nil
   "h" 'evil-multiedit--change
   "H" 'evil-multiedit--substitute
+  )
+
+ (:leader
+ ;;; <leader> s --- search
+  (:prefix-map ("s" . "search")
+   :desc "Org-rifle (opened files)"                "é" #'helm-org-rifle ; é in reference to evil snipe
+   :desc "Org-rifle (org directory)"               "è" #'helm-org-rifle-org-directory) ; slower
   )
 
  ;; Gnus : remap most used functions with 2 characters, g being the prefix
@@ -175,7 +183,6 @@
  ;;   ; & is clumsy on bepo
  ;;   :map ranger-dired-map "è" 'dired-do-async-shell-command
  ;;   )
-
 
  (:after ledger
   :map ledger-mode-map

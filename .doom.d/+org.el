@@ -6,7 +6,8 @@
 (after! org
   ;; My agenda files
   (setq org-agenda-files (list "~/projects/blog/notes/revisions.org"
-                               "~/projects/blog/notes/todo.org")
+                               "~/projects/blog/notes/todo.org"
+                               "~/projects/sir/sir.org")
         ;; Important : agenda view does not show notes with imcomplete parents in Doom
         org-agenda-dim-blocked-notes nil)
 
@@ -23,7 +24,7 @@
         "y" #'org-capture
         )
 
-  ;; Trying org-rifle as an alternative to zetteldeft: use
+  ;; For org-rifle:
   ;; helm-org-rifle-org-directory to search notes
   (setq org-directory "~/projects/blog/notes")
 
@@ -50,6 +51,14 @@
                         (org-agenda-skip-deadline-if-done t)))
             )
            ((org-agenda-filter-preset '("+revisions")))
+           )
+          ("s" "SIR"
+           ((agenda "" ((org-agenda-span 14)
+                        (org-agenda-start-day "today")
+                        (org-deadline-warning-days 0)
+                        (org-agenda-skip-deadline-if-done t)))
+            )
+           ((org-agenda-filter-preset '("+sir")))
            )
           ("o" "Others view"
            ((agenda "" ((org-agenda-start-day "today")
@@ -173,49 +182,6 @@ Compression : %^{Compression}"
         ;; Do not open on default
         ivy-bibtex-default-action 'ivy-bibtex-edit-notes))
 
-(require 'om)
-;; -----------------------------------------
-;; Functions to manipulate org files with om.el
-;;------------------------------------------------------------------------------
-(after! om.el
-  ;; INcrement 2 node properties
-  ;; TODO: check the properties exists (otherwise it fails)
-  ;;
-  ;; * TODO Root node
-  ;;    :PROPERTIES:
-  ;;    :COLLEGE: 1
-  ;;    :ECNI: 1
-  ;;    :END:
-  ;;
-  ;; It returns
-  ;;
-  ;; * TODO Root node
-  ;;    :PROPERTIES:
-  ;;    :COLLEGE: 2
-  ;;    :ECNI: 2
-  ;;    :END:
-  ;;
-  ;; Increment a number by 1
-  (defun increment-number(n)
-    (number-to-string (1+ (string-to-number n)))
-  )
-  (defun increment-reviews()
-    (interactive)
-    (om-update-this-headline*
-      (->> (om-headline-map-node-property "COLLEGE" (function increment-number) it)
-           (om-headline-map-node-property "ECNI" (function increment-number)))
-      )
-    )
-  (defun increment-college()
-    (interactive)
-    (om-update-this-headline*
-      (->> (om-headline-map-node-property "COLLEGE" (function increment-number) it))))
-  (defun increment-ecni()
-    (interactive)
-    (om-update-this-headline*
-      (->> (om-headline-map-node-property "ECNI" (function increment-number) it))))
-  )
-
 
 ;;------------------------------------------------------------------------------
 ;; ----- Deft to manage notes
@@ -267,3 +233,49 @@ Compression : %^{Compression}"
 
 (require 'deft)
 (require 'zetteldeft)
+
+;; Async execution of org source blocks (useful for long excutions)
+(require 'ob-async)
+
+;; -----------------------------------------
+;; Functions to manipulate org files with om.el
+;;------------------------------------------------------------------------------
+(require 'om)
+(after! om.el
+  ;; INcrement 2 node properties
+  ;; TODO: check the properties exists (otherwise it fails)
+  ;;
+  ;; * TODO Root node
+  ;;    :PROPERTIES:
+  ;;    :COLLEGE: 1
+  ;;    :ECNI: 1
+  ;;    :END:
+  ;;
+  ;; It returns
+  ;;
+  ;; * TODO Root node
+  ;;    :PROPERTIES:
+  ;;    :COLLEGE: 2
+  ;;    :ECNI: 2
+  ;;    :END:
+  ;;
+  ;; Increment a number by 1
+  (defun increment-number(n)
+    (number-to-string (1+ (string-to-number n)))
+  )
+  (defun increment-reviews()
+    (interactive)
+    (om-update-this-headline*
+      (->> (om-headline-map-node-property "COLLEGE" (function increment-number) it)
+           (om-headline-map-node-property "ECNI" (function increment-number)))
+      )
+    )
+  (defun increment-college()
+    (interactive)
+    (om-update-this-headline*
+      (->> (om-headline-map-node-property "COLLEGE" (function increment-number) it))))
+  (defun increment-ecni()
+    (interactive)
+    (om-update-this-headline*
+      (->> (om-headline-map-node-property "ECNI" (function increment-number) it))))
+  )
