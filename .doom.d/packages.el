@@ -2,11 +2,12 @@
 ;;; ~/.doom.d/packages.el
 
 (package! emms) ;; Manage music
+;; (package! ess) ; R in emacs
 (package! evil-numbers) ; Increment numbers as in vim
 (package! fish-completion) ; For eshell
 (package! keychain-environment) ;; Avoid typing SSH passphrase
 (package! mentor) ; Manage torrents from emacs
-(package! om.el :recipe (:host github :repo "ndwarshuis/om.el"))
+(package! org-ml) ; Functionnal programming in org
 (package! org-chef) ; Input in japanese
 (package! org-ref) ;; Manage a reading list. Error with void function....
 (package! helm-org-rifle) ;; Search org files easily
