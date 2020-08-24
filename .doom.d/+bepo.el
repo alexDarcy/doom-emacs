@@ -190,6 +190,22 @@
   :nm "««"  'ledger-navigate-prev-xact-or-directive
   )
 
+
+;; Treemacs
+ (:after treemacs-evil
+  :map evil-treemacs-state-map
+  "s" #'treemacs-previous-line
+  "t" #'treemacs-next-line
+  (:prefix-map ("j" . "prefix")
+   ;; T is a prefix so we have to remap all this (with j)....
+   "jh"  #'treemacs-toggle-show-dotfiles
+   "jw"  #'treemacs-toggle-fixed-width
+   "jv"  #'treemacs-fringe-indicator-mode
+   "jf"  #'treemacs-follow-mode
+   "ja"  #'treemacs-filewatch-mode
+   "jg"  #'treemacs-git-mode)
+  )
+
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------

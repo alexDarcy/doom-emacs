@@ -53,7 +53,10 @@
            ((org-agenda-filter-preset '("+revisions")))
            )
           ("s" "SIR"
-           ((agenda "" ((org-agenda-span 14)
+           ((tags "PRIORITY=\"A\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
+            (agenda "" ((org-agenda-span 14)
                         (org-agenda-start-day "today")
                         (org-deadline-warning-days 0)
                         (org-agenda-skip-deadline-if-done t)))
@@ -234,9 +237,12 @@ Compression : %^{Compression}"
 (require 'deft)
 (require 'zetteldeft)
 
+;; --- Org block-----
 ;; Async execution of org source blocks (useful for long excutions)
 (require 'ob-async)
-
+;; Add R to org blocks
+(org-babel-do-load-languages 'org-babel-load-languages
+    '((shell . t) (python . t) (emacs-lisp . t) (R . t)))
 ;; -----------------------------------------
 ;; Functions to manipulate org files with om.el
 ;;------------------------------------------------------------------------------
