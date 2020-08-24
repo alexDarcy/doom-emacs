@@ -134,9 +134,10 @@ Front flip : %^{frontflip}
 Front handspring : : %^{front handspring}")
           ("w" "Workout" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Workout
-RTO-up : %^{Warm-up}
+RTO : %^{RTO}
+Skin-the-cat : %^{Skin the cat}
 L-sit : %^{L-sit}
-Muscle-up (négatifs lents) : %^{Muscle-up}
+Muscle-up : %^{Muscle-up}
 Pistols (assisted) : %^{Pistols}
 Extension (lower-back) : %^{Extension}
 Front-lever row (advanced tuck) : %^{Rows}
@@ -208,7 +209,6 @@ Compression : %^{Compression}"
  zetteldeft-find-file-id-insert zetteldeft-find-file-full-title-insert
  zetteldeft-search-at-point zetteldeft-avy-link-search
  zetteldeft-avy-file-search-ace-window zetteldeft-find-file)
-  :ensure t
   :after deft
   :init
   (map! :leader
