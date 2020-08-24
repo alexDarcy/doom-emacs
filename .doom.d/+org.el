@@ -246,8 +246,8 @@ Compression : %^{Compression}"
 ;; -----------------------------------------
 ;; Functions to manipulate org files with om.el
 ;;------------------------------------------------------------------------------
-(require 'om)
-(after! om.el
+(require 'org-ml)
+(after! org-ml
   ;; INcrement 2 node properties
   ;; TODO: check the properties exists (otherwise it fails)
   ;;

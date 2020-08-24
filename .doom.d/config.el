@@ -172,12 +172,13 @@
  '(objed-cursor-color "#ff665c")
  '(package-selected-packages
    (quote
-    (org-plus-contrib ob-async camcorder zetteldeft dired-recent fasd bbdb speed-type fortune-cookie ranger pass org-drill org-chef nnir-est mentor fish-completion circe anki-editor)))
+    (ess tldr org-plus-contrib ob-async camcorder zetteldeft dired-recent fasd bbdb speed-type fortune-cookie ranger pass org-drill org-chef nnir-est mentor fish-completion circe anki-editor)))
  '(pdf-misc-print-program "/usr/bin/lpr" t)
  '(pdf-misc-print-programm "/usr/bin/lpr" t)
  '(pdf-view-midnight-colors (cons "#bbc2cf" "#242730"))
  '(rustic-ansi-faces
    ["#242730" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#bbc2cf"])
+ '(safe-local-variable-values (quote ((org-log-done . time))))
  '(vc-annotate-background "#242730")
  '(vc-annotate-color-map
    (list
