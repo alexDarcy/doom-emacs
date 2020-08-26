@@ -168,11 +168,11 @@ Compression : %^{Compression}"
   :config
   (setq org-ref-completion-library 'org-ref-ivy-cite
         reftex-default-bibliography '("~/projects/blog/notes/references.bib"
-                                       "~/projects/sir/references.bib")
+                                       "~/projects/sir/manuscript/references.bib")
         org-ref-bibliography-notes '("~/projects/blog/notes/books.org"
                                      "~/projects/blog/notes/papers.org")
         org-ref-default-bibliography '("~/projects/blog/notes/references.bib"
-                                       "~/projects/sir/references.bib")
+                                       "~/projects/sir/manuscript/references.bib")
         org-ref-pdf-directory "~/projects/blog/notes/pdfs/")
   ;; Customization : we want to insert the title of an entry in a reading list
   (push '("justtitle" . ((nil . "${title}"))) org-ref-formatted-citation-formats)
@@ -180,11 +180,11 @@ Compression : %^{Compression}"
   ;; Helm bibtex configuration must be set
   (setq bibtex-completion-library-path '("~/projects/blog/notes/pdfs")
         bibtex-completion-bibliography '("~/projects/blog/notes/references.bib"
-                                       "~/projects/sir/references.bib")
+                                       "~/projects/sir/manuscript/references.bib")
         bibtex-completion-library-path "~/projects/blog/notes/pdfs"
         bibtex-completion-notes-path "~/projects/blog/notes/books.org"
         ;; Do not open on default
-        ivy-bibtex-default-action 'ivy-bibtex-edit-notes))
+        ivy-bibtex-default-action 'ivy-bibtex-insert-citation))
 
 
 ;;------------------------------------------------------------------------------
@@ -285,3 +285,16 @@ Compression : %^{Compression}"
     (om-update-this-headline*
       (->> (om-headline-map-node-property "ECNI" (function increment-number) it))))
   )
+;; Mimosis class for thesis
+ (add-to-list 'org-latex-classes
+                  '("mimosis"
+                    "\\documentclass{mimosis}
+  [NO-DEFAULT-PACKAGES]
+  [PACKAGES]
+  [EXTRA]"
+                    ("\\chapter{%s}" . "\\addchap{%s}")
+                    ("\\section{%s}" . "\\section*{%s}")
+                    ("\\subsection{%s}" . "\\subsection*{%s}")
+                    ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+                    ("\\paragraph{%s}" . "\\paragraph*{%s}")
+                    ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
