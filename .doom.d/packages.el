@@ -2,7 +2,7 @@
 ;;; ~/.doom.d/packages.el
 
 (package! emms) ;; Manage music
-;; (package! ess)
+(package! ess)
 (package! evil-numbers) ; Increment numbers as in vim
 (package! fish-completion) ; For eshell
 (package! helm-org-rifle) ;; Search org files easily

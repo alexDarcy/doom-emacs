@@ -14,7 +14,7 @@
   (require 'org-habit)
 
   ;; Manage link to mail in gnus
-  (add-to-list 'org-modules 'ol-gnus)
+  ;; (add-to-list 'org-modules 'ol-gnus)
   ;; disable smar parens in org mode due to lag
   (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 
@@ -27,6 +27,9 @@
   ;; For org-rifle:
   ;; helm-org-rifle-org-directory to search notes
   (setq org-directory "~/projects/blog/notes")
+
+  ;; Generate papers from org mode with biblatex
+  (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex --shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
 
   ;; ;; Calfw : we need the possibility to have parents nodes for an event.
   ;; ;; Could not figure it out

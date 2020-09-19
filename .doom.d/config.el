@@ -28,6 +28,8 @@
   :config
   (setq company-idle-delay 0))
 
+;; Disable spell checking by default
+(remove-hook 'text-mode-hook #'spell-fu-mode)
 
 (after! eshell
   (require 'em-tramp) ; to load eshell’s sudo
