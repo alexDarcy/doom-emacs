@@ -150,9 +150,11 @@
 ;;   (setq rmh-elfeed-org-files (list "~/.doom.d/rss.org"))
 ;;   (setq-default elfeed-search-filter "@2-days-ago +unread ")
 ;; )
-(after! pdf-view
-  (setq (pdf-misc-print-program "/usr/bin/lpr"))
-  (setq (pdf-misc-print-program-args "-PBrother_HL-1110_series")))
+
+;; TODO This causes a bug in org-capture-link....
+;; (after! pdf-view
+;;   (setq (pdf-misc-print-program "/usr/bin/lpr"))
+;;   (setq (pdf-misc-print-program-args "-PBrother_HL-1110_series")))
 
 ;; Testing ripgrep-all
 ;; (setq counsel-rg-base-command "rga -M 240 --with-filename --no-heading --line-number --color never %s")
