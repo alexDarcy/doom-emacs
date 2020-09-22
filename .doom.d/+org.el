@@ -4,14 +4,46 @@
 ;; Org
 ;;-------------------------------------------------------------------------------
 (after! org
+  (require 'org-habit)
+
   ;; My agenda files
   (setq org-agenda-files (list "~/projects/blog/notes/revisions.org"
                                "~/projects/blog/notes/todo.org"
                                "~/projects/sir/sir.org")
         ;; Important : agenda view does not show notes with imcomplete parents in Doom
         org-agenda-dim-blocked-notes nil)
-
-  (require 'org-habit)
+  ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
+  (setq org-agenda-custom-commands
+        '(("r" "Revisions"
+           ((agenda "" ((org-agenda-span 14)
+                        (org-agenda-start-day "today")
+                        (org-deadline-warning-days 0)
+                        (org-agenda-skip-deadline-if-done t)))
+            )
+           ((org-agenda-filter-preset '("+revisions")))
+           )
+          ("s" "SIR"
+           ((tags "PRIORITY=\"A\""
+                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
+            (agenda "" ((org-agenda-span 14)
+                        (org-agenda-start-day "today")
+                        (org-deadline-warning-days 0)
+                        (org-agenda-skip-deadline-if-done t)))
+            )
+           ((org-agenda-filter-preset '("+sir")))
+           )
+          ;; We hack it with a regexp in tags as we cannot filter easily by tags
+          ("d" "Daily"
+           ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
+                 ((org-agenda-overriding-header "Révisions")))
+            (tags-todo "-revisions-daily-japanese&SCHEDULED<=\"<today>\"&TODO=\"TODO\" \
+                       |-revisions-daily-japanese&DEADLINE<=\"<today>\"&TODO=\"TODO\""
+                 ((org-agenda-overriding-header "Autres")))
+            (tags-todo "daily"
+                 ((org-agenda-overriding-header "Routine")))
+            )
+          )))
 
   ;; Manage link to mail in gnus
   ;; (add-to-list 'org-modules 'ol-gnus)
@@ -46,37 +78,6 @@
 
   ;; Focus on studying
 
-  ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
-  (setq org-agenda-custom-commands
-        '(("r" "Revisions"
-           ((agenda "" ((org-agenda-span 14)
-                        (org-agenda-start-day "today")
-                        (org-deadline-warning-days 0)
-                        (org-agenda-skip-deadline-if-done t)))
-            )
-           ((org-agenda-filter-preset '("+revisions")))
-           )
-          ("s" "SIR"
-           ((tags "PRIORITY=\"A\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
-            (agenda "" ((org-agenda-span 14)
-                        (org-agenda-start-day "today")
-                        (org-deadline-warning-days 0)
-                        (org-agenda-skip-deadline-if-done t)))
-            )
-           ((org-agenda-filter-preset '("+sir")))
-           )
-          ;; We hack it with a regexp in tags as we cannot filter easily by tags
-          ("d" "Daily"
-           ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
-                 ((org-agenda-overriding-header "Révisions")))
-            (tags-todo "-revisions-daily-japanese&SCHEDULED<=\"<today>\"|-revisions-daily-japanese&DEADLINE<=\"<today>\""
-                 ((org-agenda-overriding-header "Autres")))
-            (tags-todo "daily"
-                 ((org-agenda-overriding-header "Routine")))
-            )
-          )))
 
   ;; Remove religious holidays
   (setq holiday-bahai-holidays nil
