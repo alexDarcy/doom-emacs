@@ -4,6 +4,12 @@
 ;; (after! ranger
 ;;   :config
 ;;   (setq ranger-deer-show-details nil))
+(after! dired
+  :config
+ ; Clean view by default
+  (add-hook! 'dired-mode-hook
+    (dired-hide-details-mode )))
+
 
 ; Default shell actions (we use ranger so we lost the defaults
 (after! dired-x
@@ -13,4 +19,5 @@
         '(("\\.mkv\\'" "mplayer")))
   ; Hide dot files
   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+  ;
   )
