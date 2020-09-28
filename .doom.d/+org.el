@@ -14,7 +14,15 @@
         org-agenda-dim-blocked-notes nil)
   ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
   (setq org-agenda-custom-commands
-        '(("r" "Revisions"
+        '(("r" "Revisions (today)"
+           ((agenda "" ((org-agenda-span 1)
+                        (org-agenda-start-day "today")
+                        (org-deadline-warning-days 0)
+                        (org-agenda-skip-deadline-if-done t)))
+            )
+           ((org-agenda-filter-preset '("+revisions")))
+           )
+          ("R" "Revisions (14 days)"
            ((agenda "" ((org-agenda-span 14)
                         (org-agenda-start-day "today")
                         (org-deadline-warning-days 0)
@@ -22,17 +30,17 @@
             )
            ((org-agenda-filter-preset '("+revisions")))
            )
-          ("s" "SIR"
-           ((tags "PRIORITY=\"A\""
-                ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                 (org-agenda-overriding-header "High-priority unfinished tasks:")))
-            (agenda "" ((org-agenda-span 14)
-                        (org-agenda-start-day "today")
-                        (org-deadline-warning-days 0)
-                        (org-agenda-skip-deadline-if-done t)))
-            )
-           ((org-agenda-filter-preset '("+sir")))
-           )
+          ;; ("s" "SIR"
+          ;;  ((tags "PRIORITY=\"A\""
+          ;;       ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+          ;;        (org-agenda-overriding-header "High-priority unfinished tasks:")))
+          ;;   (agenda "" ((org-agenda-span 14)
+          ;;               (org-agenda-start-day "today")
+          ;;               (org-deadline-warning-days 0)
+          ;;               (org-agenda-skip-deadline-if-done t)))
+          ;;   )
+          ;;  ((org-agenda-filter-preset '("+sir")))
+          ;;  )
           ;; We hack it with a regexp in tags as we cannot filter easily by tags
           ("d" "Daily"
            ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
@@ -54,7 +62,9 @@
         ;; Remap org capture (bepo)
         "X" nil
         "y" #'org-capture
-        )
+        ;;; <leader> n --- notes
+        (:prefix-map ("n" . "notes")
+         :desc "Insert org headline (counsel"  "h" #'counsel-org-link))
 
   ;; For org-rifle:
   ;; helm-org-rifle-org-directory to search notes
@@ -151,8 +161,8 @@ L-sit : %^{L-sit}
 Muscle-up : %^{Muscle-up}
 Pistols (assisted) : %^{Pistols}
 Extension (lower-back) : %^{Extension}
-Front-lever row (advanced tuck) : %^{Rows}
-Planche push-up (advanced tuck): %^{Planche tucked}
+Front-lever row (tuck) : %^{Rows}
+Planche push-up (tuck): %^{Planche tucked}
 Norwegian curls: %^{Curls}
 Compression : %^{Compression}"
            )
