@@ -66,6 +66,9 @@
         (:prefix-map ("n" . "notes")
          :desc "Insert org headline (counsel"  "h" #'counsel-org-link))
 
+  ;; Fast export
+  (map! "<f2>" #'(lambda() (interactive) (org-latex-export-to-pdf t)))
+ 
   ;; For org-rifle:
   ;; helm-org-rifle-org-directory to search notes
   (setq org-directory "~/projects/blog/notes")
