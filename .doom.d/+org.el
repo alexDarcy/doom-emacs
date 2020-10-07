@@ -3,6 +3,14 @@
 ;;-------------------------------------------------------------------------------
 ;; Org
 ;;-------------------------------------------------------------------------------
+
+;; Cannot have composite views in normal agenda with tags. Super-aegnda does that
+(use-package! org-super-agenda
+  :commands (org-super-agenda-mode))
+
+(after! org-agenda
+  (org-super-agenda-mode))
+
 (after! org
   (require 'org-habit)
 
@@ -12,46 +20,50 @@
                                "~/projects/sir/sir.org")
         ;; Important : agenda view does not show notes with imcomplete parents in Doom
         org-agenda-dim-blocked-notes nil)
-  ;; Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
+
+  ;; Common variables for org-agenda
+  ;; (setq org-agenda-start-day "today"
+  ;;       org-agenda-skip-deadline-if-done t
+        ;; org-deadline-warning-days 0)
+  ;; Defaut org-agenda cannot have tags per block. A hack would be
+  ;;       ("d" "Daily"
+  ;;         ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
+  ;;               ((org-agenda-overriding-header "Révisions")))
+  ;;          (tags-todo "-revisions-daily-japanese&SCHEDULED<=\"<today>\"&TODO=\"TODO\" \
+  ;;                     |-revisions-daily-japanese&DEADLINE<=\"<today>\"&TODO=\"TODO\""
+  ;;               ((org-agenda-overriding-header "Autres")))
+  ;;          (tags-todo "daily"
+  ;;               ((org-agenda-overriding-header "Routine")))
+  ;;          )
+  ;; But it's easier to use org-super-agenda !
+  ;;Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
   (setq org-agenda-custom-commands
         '(("r" "Revisions (today)"
            ((agenda "" ((org-agenda-span 1)
-                        (org-agenda-start-day "today")
-                        (org-deadline-warning-days 0)
-                        (org-agenda-skip-deadline-if-done t)))
+                        ))
             )
            ((org-agenda-filter-preset '("+revisions")))
            )
           ("R" "Revisions (14 days)"
            ((agenda "" ((org-agenda-span 14)
-                        (org-agenda-start-day "today")
-                        (org-deadline-warning-days 0)
-                        (org-agenda-skip-deadline-if-done t)))
+                        ))
             )
            ((org-agenda-filter-preset '("+revisions")))
            )
-          ;; ("s" "SIR"
-          ;;  ((tags "PRIORITY=\"A\""
-          ;;       ((org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-          ;;        (org-agenda-overriding-header "High-priority unfinished tasks:")))
-          ;;   (agenda "" ((org-agenda-span 14)
-          ;;               (org-agenda-start-day "today")
-          ;;               (org-deadline-warning-days 0)
-          ;;               (org-agenda-skip-deadline-if-done t)))
-          ;;   )
-          ;;  ((org-agenda-filter-preset '("+sir")))
-          ;;  )
-          ;; We hack it with a regexp in tags as we cannot filter easily by tags
-          ("d" "Daily"
-           ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
-                 ((org-agenda-overriding-header "Révisions")))
-            (tags-todo "-revisions-daily-japanese&SCHEDULED<=\"<today>\"&TODO=\"TODO\" \
-                       |-revisions-daily-japanese&DEADLINE<=\"<today>\"&TODO=\"TODO\""
-                 ((org-agenda-overriding-header "Autres")))
-            (tags-todo "daily"
-                 ((org-agenda-overriding-header "Routine")))
-            )
-          )))
+          ("d" "daily"
+           ((agenda "" ((org-agenda-span 1)
+                        (org-super-agenda-groups
+                         '((:name "Studying"
+                            ;; :deadline today
+                            :tag "revisions")
+                           (:name "Daily"
+                            :tag "daily")
+                           (:name "Others"
+                            :todo "WAIT"
+                            :not (:tag ("revisions" "daily"))
+                            )
+                           )))))
+           )))
 
   ;; Manage link to mail in gnus
   ;; (add-to-list 'org-modules 'ol-gnus)
