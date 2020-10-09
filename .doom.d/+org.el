@@ -17,14 +17,14 @@
   ;; My agenda files
   (setq org-agenda-files (list "~/projects/blog/notes/revisions.org"
                                "~/projects/blog/notes/todo.org"
-                               "~/projects/sir/sir.org")
-        ;; Important : agenda view does not show notes with imcomplete parents in Doom
-        org-agenda-dim-blocked-notes nil)
-
+                               "~/projects/sir/sir.org"))
+  (setq
   ;; Common variables for org-agenda
-  ;; (setq org-agenda-start-day "today"
-  ;;       org-agenda-skip-deadline-if-done t
-        ;; org-deadline-warning-days 0)
+        ;; Important : agenda view does not show notes with imcomplete parents in Doom
+        org-agenda-dim-blocked-notes nil
+        org-agenda-start-day "today"
+        org-agenda-skip-deadline-if-done t
+        org-deadline-warning-days 0)
   ;; Defaut org-agenda cannot have tags per block. A hack would be
   ;;       ("d" "Daily"
   ;;         ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
@@ -39,15 +39,11 @@
   ;;Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
   (setq org-agenda-custom-commands
         '(("r" "Revisions (today)"
-           ((agenda "" ((org-agenda-span 1)
-                        ))
-            )
+           ((agenda "" ((org-agenda-span 1))))
            ((org-agenda-filter-preset '("+revisions")))
            )
           ("R" "Revisions (14 days)"
-           ((agenda "" ((org-agenda-span 14)
-                        ))
-            )
+           ((agenda "" ((org-agenda-span 14))))
            ((org-agenda-filter-preset '("+revisions")))
            )
           ("d" "daily"
