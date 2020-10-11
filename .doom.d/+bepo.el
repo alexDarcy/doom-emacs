@@ -142,6 +142,7 @@
      "m" #'evil-avy-goto-word-1 ; evil forward word is limited to the current
                                         ;line. This is quite powerful. "m" as in "match"
      "d" #'avy-move-line ; "d" as in "displace"
+     "h" #'avy-org-goto-heading-timer ; Jump to org headline
      ;; Jump spections
      "««"  'evilem-motion-backward-section-begin
      "«»"  'evilem-motion-backward-section-end

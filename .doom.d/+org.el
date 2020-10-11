@@ -18,13 +18,13 @@
   (setq org-agenda-files (list "~/projects/blog/notes/revisions.org"
                                "~/projects/blog/notes/todo.org"
                                "~/projects/sir/sir.org"))
-  (setq
   ;; Common variables for org-agenda
-        ;; Important : agenda view does not show notes with imcomplete parents in Doom
-        org-agenda-dim-blocked-notes nil
+  ;; Important : agenda view does not show notes with imcomplete parents in Doom
+  (setq org-agenda-dim-blocked-notes nil
         org-agenda-start-day "today"
         org-agenda-skip-deadline-if-done t
         org-deadline-warning-days 0)
+
   ;; Defaut org-agenda cannot have tags per block. A hack would be
   ;;       ("d" "Daily"
   ;;         ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
@@ -184,9 +184,47 @@ Compression : %^{Compression}"
           ;;  "* %^{Recipe title: }\n  :PROPERTIES:\n  :source-url:\n  :servings:\n  :prep-time:\n  :cook-time:\n  :ready-in:\n  :END:\n** Ingredients\n   %?\n** Directions\n\n")
           ))
   (add-load-path! "lisp")
-  (require 'org-movie)
 
+ ;; Search movie ames from omdb
+  (require 'org-movie)
   (setq org-movie-omdb-apikey "16dcceba")
+
+  ;; Cant set custom TODO locally appparently, so we add it head
+  (setq org-todo-keywords
+        ;; DOOm emacs
+        '((sequence
+           "TODO(t)"  ; A task that needs doing & is ready to do
+           "PROJ(p)"  ; A project, which usually contains other tasks
+           "STRT(s)"  ; A task that is in progress
+           "WAIT(w)"  ; Something external is holding up this task
+           "HOLD(h)"  ; This task is paused/on hold because of me
+           "|"
+           "DONE(d)"  ; Task successfully completed
+           "KILL(k)") ; Task was cancelled, aborted or is no longer applicable
+          (sequence
+           "[ ](T)"   ; A task that needs doing
+           "[-](S)"   ; Task is in progress
+           "[?](W)"   ; Task is being held up or paused
+           "|"
+           "[X](D)") ; Task was completed
+          (sequence
+           "TOUR1(1)"
+           "TOUR2(2)"
+           "|"
+           "TOUR3(3)")
+          )
+        org-todo-keyword-faces
+        '(("[-]"  . +org-todo-active)
+          ("STRT" . +org-todo-active)
+          ("[?]"  . +org-todo-onhold)
+          ("WAIT" . +org-todo-onhold)
+          ("HOLD" . +org-todo-onhold)
+          ("PROJ" . +org-todo-project)
+          ("TOUR1" . +org-todo-onhold)
+          ("TOUR2" . +org-todo-project)
+          ))
+
+
   )
 
 ;; -------------------------------------------------------------------------------
