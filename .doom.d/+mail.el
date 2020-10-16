@@ -14,9 +14,11 @@
   (map!
    (:leader
      (:prefix "o"
-       (:desc "Notmuch" "n" #'=notmuch));; This doom function jump to inbox in a new workspace
-     (:prefix "s"
-       (:desc "Counsell notmuch" "n" #'counsel-notmuch)))) ;; Quick search in mail
+      (:prefix-map ("n" . "notmuch")
+       :desc "Inbox" "i" #'=notmuch;; This doom function jump to inbox in a new workspace
+       :desc "Counsel search" "c" #'counsel-notmuch
+       :desc "Search " "s" #'notmuch-search
+       :desc "Home " "h" #'notmuch))))
   :config
   (setq sendmail-program  "/usr/bin/msmtp"
         notmuch-archive-tags '("-inbox" "-unread" "+archived")
