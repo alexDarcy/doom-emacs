@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Shell code block
+# key: osh
+# condition: t
+# --
+#+BEGIN_SRC shell
+#+ENd_SRC

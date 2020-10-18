@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Glossary entry
+# uuid:
+# key: ogls
+# condition: t
+# --
+\gls{$1}

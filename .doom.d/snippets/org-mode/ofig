@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Org mode figure in Latex
+# uuid:
+# key: ofig
+# condition: t
+# --
+Fig.\nbsp{}[[$1]]

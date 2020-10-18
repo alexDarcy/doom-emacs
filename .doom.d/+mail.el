@@ -21,7 +21,7 @@
        :desc "Home " "h" #'notmuch))))
   :config
   (setq sendmail-program  "/usr/bin/msmtp"
-        notmuch-archive-tags '("-inbox" "-unread" "+archived")
+        notmuch-archive-tags '("-inbox" "-unread" "-new" "+archived")
         notmuch-saved-searches '(
                                  (:name "inbox"   :query "tag:inbox "    :key "i" :search-type 'tree)
                                  (:name "sent"    :query "tag:sent"      :key "s" :search-type 'tree)

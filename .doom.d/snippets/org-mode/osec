@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Org mode reference to Seq
+# uuid:
+# key: osec
+# condition: t
+# --
+Sec.\nbsp{}[[$1]]

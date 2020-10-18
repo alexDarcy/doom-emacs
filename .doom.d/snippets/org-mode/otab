@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Org ref to table
+# uuid:
+# key: otab
+# condition: t
+# --
+Tab.\nbsp{$1}
