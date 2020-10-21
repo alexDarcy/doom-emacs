@@ -171,7 +171,8 @@
     :n "t" 'evil-next-line ; Swap t <-> j
     :n "j" 'dired-toggle-mark ; Swap t <-> j
     :n "h" 'dired-up-directory ;; Better than ^ twice on bepo
-    :n "è" 'dired-do-async-shell-command ; & is clumsy on bepo
+    :n "&" 'nil
+    :n "ê" 'dired-do-async-shell-command ; & is clumsy on bepo
    ))
 
  ;; ;; Default prefix is '&', not convenient
