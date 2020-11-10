@@ -30,6 +30,9 @@
         ;; Disable colors to use default (easier on the eyes)
         shr-use-colors nil)
 
+  ;; Disable all popup
+  (set-popup-rule! "^\\*notmuch" :ignore t)
+
 ;;  Some mapping are overriden by eval commands so we need to remap them
  (map! (:after notmuch
          (:map notmuch-common-keymap

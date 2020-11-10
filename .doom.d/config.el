@@ -103,6 +103,10 @@
                 git-commit-mode-hook)
   #'flyspell-mode)
 
+(after! ytdl
+  :config
+  (setq ytdl-always-query-default-filename "yes")
+  )
 ;; Doom disables some latex pairs, here is an example on how to enable them
 ;; (after! latex
 ;;   (sp-with-modes '(tex-mode
