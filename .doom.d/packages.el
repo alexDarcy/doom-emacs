@@ -16,6 +16,8 @@
 (package! org-super-agenda) ;; Better agenda : group by tags and so on
 (package! projectile-ripgrep) ; I like ripgrep
 (package! zetteldeft) ; manage Note-taking
+(package! ytdl) ; interface to youtupe-dl
+
 ;; (package! docker-tramp) ; TRAMP request in docker (also used for org mode  code blocks)
 ;;; Examples:
 

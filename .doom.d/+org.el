@@ -125,10 +125,10 @@
 Passe-muraille :
 - cat hang shimmy (each side) : %^{Cat hang shimmy}
 - top out (each side) : %^{Top out}
-- negative : %^{négatifs}
 - cat hang leg press (each side) : %^{Cat hang leg press}
 - cat hang pull-up (each side) : %^{Cat hang pull-up}
-- knee raises (each side) : %^{Knee raises}")
+- knee raises (each side) : %^{Knee raises}
+- passe-muraille: %^{passe-muraille}")
           ("po" "Parkour (autre)" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 %^{Parkour}")

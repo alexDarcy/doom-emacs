@@ -106,6 +106,10 @@
                 git-commit-mode-hook)
   #'flyspell-mode)
 
+(after! ytdl
+  :config
+  (setq ytdl-always-query-default-filename "yes")
+  )
 ;; Doom disables some latex pairs, here is an example on how to enable them
 ;; (after! latex
 ;;   (sp-with-modes '(tex-mode
@@ -154,10 +158,8 @@
 ;;   (setq-default elfeed-search-filter "@2-days-ago +unread ")
 ;; )
 
-;; TODO This causes a bug in org-capture-link....
-;; (after! pdf-view
-;;   (setq (pdf-misc-print-program "/usr/bin/lpr"))
-;;   (setq (pdf-misc-print-program-args "-PBrother_HL-1110_series")))
+(setq pdf-misc-print-program "/usr/bin/lpr")
+(setq pdf-misc-print-program-args "-PBrother_HL-1110_series")
 
 ;; Testing ripgrep-all
 ;; (setq counsel-rg-base-command "rga -M 240 --with-filename --no-heading --line-number --color never %s")
@@ -180,8 +182,6 @@
  '(package-selected-packages
    (quote
     (ess tldr org-plus-contrib ob-async camcorder zetteldeft dired-recent fasd bbdb speed-type fortune-cookie ranger pass org-drill org-chef nnir-est mentor fish-completion circe anki-editor)))
- '(pdf-misc-print-program "/usr/bin/lpr" t)
- '(pdf-misc-print-programm "/usr/bin/lpr" t)
  '(pdf-view-midnight-colors (cons "#bbc2cf" "#242730"))
  '(rustic-ansi-faces
    ["#242730" "#ff665c" "#7bc275" "#FCCE7B" "#51afef" "#C57BDB" "#5cEfFF" "#bbc2cf"])
