@@ -6,6 +6,7 @@
 (package! evil-numbers) ; Increment numbers as in vim
 (package! fish-completion) ; For eshell
 (package! helm-org-rifle) ;; Search org files easily
+(package! hyperbole) ;; Hard do describe
 (package! keychain-environment) ;; Avoid typing SSH passphrase
 (package! mentor) ; Manage torrents from emacs
 (package! ob-async) ; Execute code block asynchronsly
