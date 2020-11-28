@@ -105,8 +105,10 @@
 
 (after! ytdl
   :config
-  (setq ytdl-always-query-default-filename "yes")
+  (setq ytdl-always-query-default-filename "yes"
+        ytdl-video-folder (expand-file-name "~/videos"))
   )
+
 ;; Doom disables some latex pairs, here is an example on how to enable them
 ;; (after! latex
 ;;   (sp-with-modes '(tex-mode

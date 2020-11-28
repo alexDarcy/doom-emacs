@@ -208,6 +208,11 @@
    "jg"  #'treemacs-git-mode)
   )
 
+ (:after pdf-view
+   :map pdf-view-mode-map
+   :gn "C-t" #'pdf-view-next-page-command
+   :gn "C-s" #'pdf-view-previous-page-command)
+
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------
@@ -219,9 +224,3 @@
     )
   )
 )
-
- ;; ;; Does not work
-;; (after! pdf-tools
-;;   (map!
-;;    :map pdf-view-mode-map
-;;    :nm "t" #'pdf-view-next-line-or-next-page))
