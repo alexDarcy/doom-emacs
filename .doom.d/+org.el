@@ -366,6 +366,5 @@ Compression : %^{Compression}"
                     ("\\paragraph{%s}" . "\\paragraph*{%s}")
                     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
 
-;; Hack
 ;; https://github.com/hlissner/doom-emacs/issues/3172
 (add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))

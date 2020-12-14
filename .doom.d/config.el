@@ -112,7 +112,10 @@
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
 
-
+(after! elfeed
+  :config
+  (setq elfeed-feeds
+        '("https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw")))
 ; No flyspell by default
 (remove-hook! '(org-mode-hook
                 markdown-mode-hook
