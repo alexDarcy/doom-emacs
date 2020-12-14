@@ -173,7 +173,7 @@ Muscle-up : %^{Muscle-up}
 Pistols (assisted) : %^{Pistols}
 Extension (lower-back) : %^{Extension}
 Front-lever row (tuck) : %^{Rows}
-Planche push-up (tuck): %^{Planche tucked}
+Planche on rings (tuck): %^{Planche tucked}
 Norwegian curls: %^{Curls}
 Compression : %^{Compression}"
            )
@@ -365,3 +365,7 @@ Compression : %^{Compression}"
                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                     ("\\paragraph{%s}" . "\\paragraph*{%s}")
                     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; Hack
+;; https://github.com/hlissner/doom-emacs/issues/3172
+(add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))
