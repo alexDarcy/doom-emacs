@@ -196,8 +196,12 @@
 
  (:after pdf-view
    :map pdf-view-mode-map
-   :gn "C-t" #'pdf-view-next-page-command
-   :gn "C-s" #'pdf-view-previous-page-command)
+   :gn "n" #'pdf-view-next-page-command
+   :gn "p" #'pdf-view-previous-page-command
+   :gn "b" #'pdf-view-scroll-down-or-previous-page
+   :gn "f" #'pdf-view-scroll-up-or-next-page
+   :gn "r" #'(lambda() (interactive) (image-forward-hscroll 10)) ;; left and right movement
+   :gn "c" #'(lambda() (interactive) (image-backward-hscroll 10)))
 
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
