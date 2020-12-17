@@ -38,12 +38,14 @@
 (remove-hook 'text-mode-hook #'spell-fu-mode)
 
 (after! eshell
+  :config
   (require 'em-tramp) ; to load eshell’s sudo
   ;; Switch to eshell’s sudo to avoid typing the password each time
   (setq eshell-prefer-lisp-functions t)
   ;; Aliases do not seem to be written on file...
-  (set-eshell-alias!
-   "sudo"  "eshell/sudo $*")
+  (set-eshell-alias! "sudo"  "eshell/sudo $*")
+  (setq password-cache t) ; enable password caching
+  (setq password-cache-expiry 3600) ; for one hour (time in secs)
 
   ;;   ;; Fish completion in eshell.
   ;;   ;; The doc tells us to use "nil t" as argument but it does not work in doom...

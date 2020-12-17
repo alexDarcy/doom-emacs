@@ -200,8 +200,8 @@
    :gn "p" #'pdf-view-previous-page-command
    :gn "b" #'pdf-view-scroll-down-or-previous-page
    :gn "f" #'pdf-view-scroll-up-or-next-page
-   :gn "r" #'(lambda() (interactive) (image-forward-hscroll 10)) ;; left and right movement
-   :gn "c" #'(lambda() (interactive) (image-backward-hscroll 10)))
+   :gn "r" (lambda! (image-forward-hscroll 10)) ;; left and right movement
+   :gn "c" (lambda! (image-backward-hscroll 10)))
 
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
