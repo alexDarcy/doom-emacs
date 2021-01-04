@@ -16,8 +16,7 @@
   :when (featurep! +ranger)
   :config
   (setq dired-guess-shell-alist-user
-        '(("\\.m\\(kv|p4\\))\\'" "mpv")
-          ("\\.webm\\'" "mpv")
+          ("\\.webm\\'" "mplayer")
           ("\\.docx\\'" "libreoffice")))
   ; Hide dot files
   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))

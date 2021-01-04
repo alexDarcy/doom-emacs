@@ -116,6 +116,9 @@
            "* Handstand
  StW %^{StW}
  BtW %^{BtW}" )
+("j" "Jump ro»pe" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
+"* Jump rope
+%^{today}")
           ("l" "L-sit" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* L-sit
  %^{GtG}" )

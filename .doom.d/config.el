@@ -6,7 +6,7 @@
 (load-theme 'doom-one t)
 ;; (setq doom-one-brighter-comments t) ;; We want the comments visible
 
-;; (setq doom-font (font-spec :family "MesloLGS NF" :size 12)
+(setq doom-font (font-spec :family "Source Code Pro" :size 12))
       ;; doom-unicode-font (font-spec :family "MesloLGS NF" :size 12)
       ;; doom-variable-pitch-font (font-spec :family "MesloLGS NF")
       ;; )
