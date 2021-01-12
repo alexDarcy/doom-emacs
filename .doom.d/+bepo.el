@@ -5,8 +5,9 @@
 ;;-------------------------------------------------------------------------------
  ;; Global movement j, k <-> t,s
 ;;-------------------------------------------------------------------------------
-(map!
+;;
 
+(map!
  :nm "s" 'evil-previous-line
  :vm "s" 'evil-previous-visual-line ;; visual mode too
  :nm "S" nil
@@ -194,7 +195,7 @@
    "jg"  #'treemacs-git-mode)
   )
 
- (:after pdf-view
+ (:after pdf-tools
    :map pdf-view-mode-map
    :gn "n" #'pdf-view-next-page-command
    :gn "p" #'pdf-view-previous-page-command
@@ -206,6 +207,7 @@
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------
+
 (:leader
   ;; Switch buffer with space + "«" instead of space + "<"
   "<" nil

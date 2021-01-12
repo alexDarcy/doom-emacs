@@ -62,7 +62,7 @@
            )))
 
   ;; Manage link to mail in gnus
-  ;; (add-to-list 'org-modules 'ol-gnus)
+  (add-to-list 'org-modules 'ol-gnus)
   ;; disable smar parens in org mode due to lag
   (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 
@@ -126,7 +126,7 @@
           ("pm" "Parkour (passe-muraille)" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 Passe-muraille :
-- cat hang shimmy (each side) : %^{Cat hang shimmy}
+- cat hang (each side) : %^{Cat hang shimmy}
 - top out (each side) : %^{Top out}
 - cat hang leg press (each side) : %^{Cat hang leg press}
 - cat hang pull-up (each side) : %^{Cat hang pull-up}
