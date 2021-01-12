@@ -62,7 +62,7 @@
            )))
 
   ;; Manage link to mail in gnus
-  ;; (add-to-list 'org-modules 'ol-gnus)
+  (add-to-list 'org-modules 'ol-gnus)
   ;; disable smar parens in org mode due to lag
   (add-hook 'org-mode-hook #'turn-off-smartparens-mode)
 
@@ -116,6 +116,9 @@
            "* Handstand
  StW %^{StW}
  BtW %^{BtW}" )
+("j" "Jump ro»pe" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
+"* Jump rope
+%^{today}")
           ("l" "L-sit" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* L-sit
  %^{GtG}" )
@@ -123,7 +126,7 @@
           ("pm" "Parkour (passe-muraille)" entry (file+olp+datetree "~/projects/blog/notes/workout.org")
            "* Parkour
 Passe-muraille :
-- cat hang shimmy (each side) : %^{Cat hang shimmy}
+- cat hang (each side) : %^{Cat hang shimmy}
 - top out (each side) : %^{Top out}
 - cat hang leg press (each side) : %^{Cat hang leg press}
 - cat hang pull-up (each side) : %^{Cat hang pull-up}
@@ -173,7 +176,7 @@ Muscle-up : %^{Muscle-up}
 Pistols (assisted) : %^{Pistols}
 Extension (lower-back) : %^{Extension}
 Front-lever row (tuck) : %^{Rows}
-Planche push-up (tuck): %^{Planche tucked}
+Planche on rings (tuck): %^{Planche tucked}
 Norwegian curls: %^{Curls}
 Compression : %^{Compression}"
            )
@@ -269,40 +272,49 @@ Compression : %^{Compression}"
   ;; 2. Conflicts with doom : duplicate title
   (set-file-template! 'org-mode :ignore t))
 
-
-
-;; Zetteldeft on top of deft
-(use-package zetteldeft
- :commands (zetteldeft-new-file zetteldeft-tag-buffer zetteldeft-search-at-point
- zetteldeft-find-file zetteldeft-search-current-id zetteldeft-follow-link
- zetteldeft-avy-tag-search zetteldeft-new-file-and-link zetteldeft-file-rename
- zetteldeft-find-file-id-insert zetteldeft-find-file-full-title-insert
- zetteldeft-search-at-point zetteldeft-avy-link-search
- zetteldeft-avy-file-search-ace-window zetteldeft-find-file)
-  :after deft
+(after! org-roam
   :init
   (map! :leader
-        :prefix ("d" . "zetteldeft")
-        :desc "deft" "d" #'deft
-        :desc "zetteldeft-deft-new-search" "D" #'zetteldeft-new-file
-        :desc "deft-refresh" "R" #'deft-refresh
-        :desc "zetteldeft-search-at-point" "s" #'zetteldeft-search-at-point
-        :desc "zetteldeft-search-current-id" "c" #'zetteldeft-search-current-id
-        :desc "zetteldeft-follow-link" "f" #'zetteldeft-follow-link
-        :desc "zetteldeft-avy-file-search-ace-window" "F" #'zetteldeft-avy-file-search-ace-window
-        :desc "zetteldeft-avy-link-search" "l" #'zetteldeft-avy-link-search
-        :desc "zetteldeft-avy-tag-search" "t" #'zetteldeft-avy-tag-search
-        :desc "zetteldeft-tag-buffer" "T" #'zetteldeft-tag-buffer
-        :desc "zetteldeft-find-file-id-insert" "i" #'zetteldeft-find-file-id-insert
-        :desc "zetteldeft-find-file-full-title-insert" "I" #'zetteldeft-find-file-full-title-insert
-        :desc "zetteldeft-find-file" "o" #'zetteldeft-find-file
-        :desc "zetteldeft-new-file" "n" #'zetteldeft-new-file
-        :desc "zetteldeft-new-file-and-link" "N" #'zetteldeft-new-file-and-link
-        :desc "zetteldeft-file-rename" "r" #'zetteldeft-file-rename
-        :desc "zetteldeft-count-words" "x" #'zetteldeft-count-words))
+        :prefix ("r" . "org-roam")
+        :desc "insert" "i" #'org-roam-insert
+        :desc "find file" "f" #'org-roam-find-file)
+  :config
+  (setq org-roam-directory "~/projects/blog/notes"))
 
-(require 'deft)
-(require 'zetteldeft)
+(add-hook 'after-init-hook 'org-roam-mode)
+
+
+;; ;; Zetteldeft on top of deft
+;; (use-package zetteldeft
+;;  :commands (zetteldeft-new-file zetteldeft-tag-buffer zetteldeft-search-at-point
+;;  zetteldeft-find-file zetteldeft-search-current-id zetteldeft-follow-link
+;;  zetteldeft-avy-tag-search zetteldeft-new-file-and-link zetteldeft-file-rename
+;;  zetteldeft-find-file-id-insert zetteldeft-find-file-full-title-insert
+;;  zetteldeft-search-at-point zetteldeft-avy-link-search
+;;  zetteldeft-avy-file-search-ace-window zetteldeft-find-file)
+;;   :after deft
+;;   :init
+;;   (map! :leader
+;;         :prefix ("d" . "zetteldeft")
+;;         :desc "deft" "d" #'deft
+;;         :desc "zetteldeft-deft-new-search" "D" #'zetteldeft-new-file
+;;         :desc "deft-refresh" "R" #'deft-refresh
+;;         :desc "zetteldeft-search-at-point" "s" #'zetteldeft-search-at-point
+;;         :desc "zetteldeft-search-current-id" "c" #'zetteldeft-search-current-id
+;;         :desc "zetteldeft-follow-link" "f" #'zetteldeft-follow-link
+;;         :desc "zetteldeft-avy-file-search-ace-window" "F" #'zetteldeft-avy-file-search-ace-window
+;;         :desc "zetteldeft-avy-link-search" "l" #'zetteldeft-avy-link-search
+;;         :desc "zetteldeft-avy-tag-search" "t" #'zetteldeft-avy-tag-search
+;;         :desc "zetteldeft-tag-buffer" "T" #'zetteldeft-tag-buffer
+;;         :desc "zetteldeft-find-file-id-insert" "i" #'zetteldeft-find-file-id-insert
+;;         :desc "zetteldeft-find-file-full-title-insert" "I" #'zetteldeft-find-file-full-title-insert
+;;         :desc "zetteldeft-find-file" "o" #'zetteldeft-find-file
+;;         :desc "zetteldeft-new-file" "n" #'zetteldeft-new-file
+;;         :desc "zetteldeft-new-file-and-link" "N" #'zetteldeft-new-file-and-link
+;;         :desc "zetteldeft-file-rename" "r" #'zetteldeft-file-rename
+;;         :desc "zetteldeft-count-words" "x" #'zetteldeft-count-words))
+;; (require 'zetteldeft)
+
 
 ;; --- Org block-----
 ;; Async execution of org source blocks (useful for long excutions)
@@ -365,3 +377,6 @@ Compression : %^{Compression}"
                     ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                     ("\\paragraph{%s}" . "\\paragraph*{%s}")
                     ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
+
+;; https://github.com/hlissner/doom-emacs/issues/3172
+(add-hook 'org-mode-hook (lambda () (electric-indent-local-mode -1)))

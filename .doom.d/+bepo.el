@@ -5,8 +5,9 @@
 ;;-------------------------------------------------------------------------------
  ;; Global movement j, k <-> t,s
 ;;-------------------------------------------------------------------------------
-(map!
+;;
 
+(map!
  :nm "s" 'evil-previous-line
  :vm "s" 'evil-previous-visual-line ;; visual mode too
  :nm "S" nil
@@ -38,21 +39,19 @@
   "H" 'evil-multiedit--substitute
   )
 
- (:leader
- ;;; <leader> s --- search
-  (:prefix-map ("s" . "search")
-   :desc "Org-rifle (opened files)"                "é" #'helm-org-rifle ; é in reference to evil snipe
-   :desc "Org-rifle (org directory)"               "è" #'helm-org-rifle-org-directory) ; slower
-  )
+;;; :ui
+ (:when (featurep! :ui popup)
+       "C-à"   #'+popup/raise)
 
- ;; Gnus : remap most used functions with 2 characters, g being the prefix
- (:after gnus
-  :map gnus-group-mode-map
-  :nm "gr" 'gnus-group-get-new-news
-  :nm "gf" 'nnmairix-search
-  :map gnus-summary-mode-map
-  :nm "gm" 'gnus-summary-move-article
-  )
+
+ ;; ;; Gnus : remap most used functions with 2 characters, g being the prefix
+ ;; (:after gnus
+ ;;  :map gnus-group-mode-map
+ ;;  :nm "gr" 'gnus-group-get-new-news
+ ;;  :nm "gf" 'nnmairix-search
+ ;;  :map gnus-summary-mode-map
+ ;;  :nm "gm" 'gnus-summary-move-article
+ ;;  )
 
  ;; Evil navigation in notmuch
  (:after notmuch
@@ -70,7 +69,6 @@
   :nm "j" #'notmuch-search-filter-by-tag
   )
 
-;; #'notmuch-search-filter-by-tag
 
  ;; Calendar motion
   (:map calendar-mode-map
@@ -175,23 +173,12 @@
     :n "ê" 'dired-do-async-shell-command ; & is clumsy on bepo
    ))
 
- ;; ;; Default prefix is '&', not convenient
- ;; (:after ranger
- ;;   :m "ç" ranger-dired-map
- ;;   (:map ranger-mode-map
- ;;    "t" 'evil-next-line
- ;;    "s" 'evil-previous-line
- ;;    "j" 'ranger-toggle-mark)
- ;;   ; & is clumsy on bepo
- ;;   :map ranger-dired-map "è" 'dired-do-async-shell-command
- ;;   )
 
  (:after ledger
   :map ledger-mode-map
   :nm "»»"  'ledger-navigate-next-xact-or-directive
   :nm "««"  'ledger-navigate-prev-xact-or-directive
   )
-
 
 ;; Treemacs
  (:after treemacs-evil
@@ -208,19 +195,30 @@
    "jg"  #'treemacs-git-mode)
   )
 
- (:after pdf-view
+ (:after pdf-tools
    :map pdf-view-mode-map
-   :gn "C-t" #'pdf-view-next-page-command
-   :gn "C-s" #'pdf-view-previous-page-command)
+   :gn "n" #'pdf-view-next-page-command
+   :gn "p" #'pdf-view-previous-page-command
+   :gn "b" #'pdf-view-scroll-down-or-previous-page
+   :gn "f" #'pdf-view-scroll-up-or-next-page
+   :gn "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
+   :gn "c" (cmd! (image-backward-hscroll 10)))
 
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------
+
 (:leader
   ;; Switch buffer with space + "«" instead of space + "<"
   "<" nil
+  "~" nil
   (:when (featurep! :ui workspaces)
     :desc "Switch buffer"           "«" #'switch-to-buffer
     )
+  (:when (featurep! :ui popup)
+   :desc "Toggle last popup"     "ê"    #'+popup/toggle)
+  (:prefix-map ("s" . "search")
+   :desc "Org-rifle (opened files)"                "é" #'helm-org-rifle ; é in reference to evil snipe
+   :desc "Org-rifle (org directory)"               "è" #'helm-org-rifle-org-directory) ; slower
   )
 )

@@ -6,6 +6,12 @@
 (load-theme 'doom-one t)
 ;; (setq doom-one-brighter-comments t) ;; We want the comments visible
 
+(setq doom-font (font-spec :family "Source Code Pro" :size 12))
+      ;; doom-unicode-font (font-spec :family "MesloLGS NF" :size 12)
+      ;; doom-variable-pitch-font (font-spec :family "MesloLGS NF")
+      ;; )
+;; (setq doom-unicode-font doom-font)
+
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration
@@ -32,12 +38,14 @@
 (remove-hook 'text-mode-hook #'spell-fu-mode)
 
 (after! eshell
+  :config
   (require 'em-tramp) ; to load eshell’s sudo
   ;; Switch to eshell’s sudo to avoid typing the password each time
   (setq eshell-prefer-lisp-functions t)
   ;; Aliases do not seem to be written on file...
-  (set-eshell-alias!
-   "sudo"  "eshell/sudo $*")
+  (set-eshell-alias! "sudo"  "eshell/sudo $*")
+  (setq password-cache t) ; enable password caching
+  (setq password-cache-expiry 3600) ; for one hour (time in secs)
 
   ;;   ;; Fish completion in eshell.
   ;;   ;; The doc tells us to use "nil t" as argument but it does not work in doom...
@@ -54,12 +62,26 @@
    (:desc "Emms" "m" #'emms)
    )))
 
-(use-package! emms-setup
-  :commands (emms)
+(use-package emms
   :config
-  (emms-standard)
-  (emms-default-players)
-  (setq emms-source-file-default-directory "/Data/Music/"))
+    (require 'emms-setup)
+    (require 'emms-player-mpd)
+    (emms-all) ; don't change this to values you see on stackoverflow questions if you expect emms to work
+    ;; (setq emms-seek-seconds 5)
+    (setq emms-player-list '(emms-player-mpd))
+    (setq emms-info-functions '(emms-info-mpd))
+    ;; Socket does not seem to work
+    (setq emms-player-mpd-server-name "localhost")
+    (setq emms-player-mpd-server-port "6600")
+  ;; :bind
+  ;;   ("s-m p" . emms)
+  ;;   ("s-m b" . emms-smart-browse)
+  ;;   ("s-m r" . emms-player-mpd-update-all-reset-cache)
+  ;;   ("<XF86AudioPrev>" . emms-previous)
+  ;;   ("<XF86AudioNext>" . emms-next)
+  ;;   ("<XF86AudioPlay>" . emms-pause)
+  ;;   ("<XF86AudioStop>" . emms-stop))
+  )
 
 ;; LSP
 ;; Haskell : using ghcide instead of haskell-ide (completion hangs when using it...)
@@ -92,7 +114,10 @@
   (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
 
-
+(after! elfeed
+  :config
+  (setq elfeed-feeds
+        '("https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw")))
 ; No flyspell by default
 (remove-hook! '(org-mode-hook
                 markdown-mode-hook
