@@ -11,14 +11,14 @@
     (dired-hide-details-mode )))
 
 
-; Default shell actions (we use ranger so we lost the defaults
-(after! dired-x
-  :when (featurep! +ranger)
-  :config
-  (setq dired-guess-shell-alist-user
-        '(("\\.m\\(kv\\|p4\\)\\'" "mpv")
-          ("\\.docx\\'" "libreoffice")))
-  ; Hide dot files
-  (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-  ;
-  )
+;; ; Default shell actions (we use ranger so we lost the defaults
+;; (after! dired-x
+;;   ;; :when (featurep! +ranger)
+;;   :config
+;;   (setq dired-guess-shell-alist-user
+;;         '(("\\.m\\(kv\\|p4\\)\\'" "mpv")
+;;           ("\\.docx\\'" "libreoffice")))
+;;   ; Hide dot files
+;;   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
+;;   ;
+;;   )

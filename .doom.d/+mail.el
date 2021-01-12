@@ -20,7 +20,8 @@
        :desc "Search " "s" #'notmuch-search
        :desc "Home " "h" #'notmuch))))
   :config
-  (setq sendmail-program  "/usr/bin/msmtp"
+  ;; (setq sendmail-program  "/usr/bin/msmtp" ;; Linux
+  (setq sendmail-program  "/usr/local/bin/msmtp" ;; Freebsd
         notmuch-archive-tags '("-inbox" "-unread" "-new" "+archived")
         notmuch-saved-searches '(
                                  (:name "inbox"   :query "tag:inbox "    :key "i" :search-type 'tree)
