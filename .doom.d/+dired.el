@@ -13,12 +13,13 @@
 
 ; Default shell actions (we use ranger so we lost the defaults
 (after! dired-x
-  :when (featurep! +ranger)
+  ;; :when (featurep! +ranger)
   :config
   ;; Taken from doom
   ;; Let OS decide how to open certain files
   (when-let (cmd (cond (IS-MAC "open")
                        (IS-LINUX "xdg-open")
+                       (IS-BSD "xdg-open")
                        (IS-WINDOWS "start")))
     (setq dired-guess-shell-alist-user
           `(("\\.\\(?:docx\\|pdf\\|djvu\\|eps\\)\\'" ,cmd)

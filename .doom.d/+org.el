@@ -82,7 +82,7 @@
   (setq org-directory "~/projects/blog/notes")
 
   ;; Generate papers from org mode with biblatex
-  (setq org-latex-pdf-process '("latexmk -pdflatex='pdflatex --shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
+  (setq org-latex-pdf-process '("latexmk -pdflatex='lualatex --shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
 
   ;; ;; Calfw : we need the possibility to have parents nodes for an event.
   ;; ;; Could not figure it out
