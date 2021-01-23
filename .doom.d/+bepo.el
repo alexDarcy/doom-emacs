@@ -197,12 +197,12 @@
 
  (:after pdf-tools
    :map pdf-view-mode-map
-   :gn "n" #'pdf-view-next-page-command
-   :gn "p" #'pdf-view-previous-page-command
-   :gn "b" #'pdf-view-scroll-down-or-previous-page
-   :gn "f" #'pdf-view-scroll-up-or-next-page
-   :gn "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
-   :gn "c" (cmd! (image-backward-hscroll 10)))
+   :n "n" #'pdf-view-next-page-command
+   :n "p" #'pdf-view-previous-page-command
+   :n "b" #'pdf-view-scroll-down-or-previous-page
+   :n "f" #'pdf-view-scroll-up-or-next-page
+   :n "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
+   :n "c" (cmd! (image-backward-hscroll 10)))
 
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu

@@ -3,7 +3,7 @@
 ;; read torrents from rtorrent daemon
 (after! mentor
   :init
-  (setq mentor-rtorrent-external-rpc "/torrents/rtorrent.sock")
+  (setq mentor-rtorrent-external-rpc "/home/alex/.rtorrent.sock")
   (map!
    :map mentor-mode-map
 
