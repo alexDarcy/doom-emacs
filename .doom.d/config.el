@@ -15,6 +15,7 @@
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration
+(load! "+irc")
 (load! "+mail") ; Mail configuration
 (load! "+org") ; Org configuration
 (load! "+torrents") ; mentor configuration
@@ -91,27 +92,6 @@
   (setq lsp-haskell-process-args-hie '())
   ;; Comment/uncomment this line to see interactions between lsp client/server.
   ;;(setq lsp-log-io t)
-  )
-
-;; ---- ERC
-;; A helper function to auto-start bitlbee
-(defun bitlbee-start ()
-  (interactive)
-  (erc :server "localhost" :port 6667 :nick "alex" :password "sharingan"))
-
-;; Here we start ERC at boot, with the password here for minimal coding
-(use-package! erc
-  ;; Bitlbee by default
-  :commands (bitlbee-start)
-  :init
-  (map!
-   (:leader
-    (:prefix "o"
-     (:desc "Chat (bitlbee)" "c" 'bitlbee-start)
-     (:desc "Gnus" "g" 'gnus))))
-  :config
-  ;; Autojoin must be done inside bitlbee directly
-  (setq erc-hide-list '("JOIN" "PART" "QUIT" "NICK"))
   )
 
 (after! elfeed
