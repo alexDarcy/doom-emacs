@@ -25,16 +25,6 @@
         org-agenda-skip-deadline-if-done t
         org-deadline-warning-days 0)
 
-  ;; Defaut org-agenda cannot have tags per block. A hack would be
-  ;;       ("d" "Daily"
-  ;;         ((tags-todo "revisions&SCHEDULED<=\"<today>\"|revisions&DEADLINE<=\"<today>\""
-  ;;               ((org-agenda-overriding-header "Révisions")))
-  ;;          (tags-todo "-revisions-daily-japanese&SCHEDULED<=\"<today>\"&TODO=\"TODO\" \
-  ;;                     |-revisions-daily-japanese&DEADLINE<=\"<today>\"&TODO=\"TODO\""
-  ;;               ((org-agenda-overriding-header "Autres")))
-  ;;          (tags-todo "daily"
-  ;;               ((org-agenda-overriding-header "Routine")))
-  ;;          )
   ;; But it's easier to use org-super-agenda !
   ;;Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
   (setq org-agenda-custom-commands
@@ -46,7 +36,10 @@
            ((agenda "" ((org-agenda-span 14))))
            ((org-agenda-filter-preset '("+revisions")))
            )
-          ("d" "daily"
+         ("d" "daily"
+           ((agenda "" ((org-agenda-span 1))))
+           ((org-agenda-filter-preset '("+daily"))))
+          ("t" "today"
            ((agenda "" ((org-agenda-span 1)
                         (org-super-agenda-groups
                          '((:name "Studying"
