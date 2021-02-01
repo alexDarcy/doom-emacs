@@ -196,7 +196,7 @@
   )
 
  (:after pdf-tools
-   :map pdf-view-mode-map
+  :map pdf-view-mode-map
    :n "n" #'pdf-view-next-page-command
    :n "p" #'pdf-view-previous-page-command
    :n "b" #'pdf-view-scroll-down-or-previous-page

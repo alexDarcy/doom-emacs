@@ -6,6 +6,7 @@
 (package! evil-numbers) ; Increment numbers as in vim
 (package! dired-rsync) ; rsync in dired
 (package! fish-completion) ; For eshell
+(package! gist) ; Github gist
 ;; (package! helm-org-rifle) ;; Search org files easily
 (package! hyperbole) ;; Hard do describe
 (package! keychain-environment) ;; Avoid typing SSH passphrase
