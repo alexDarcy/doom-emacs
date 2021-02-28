@@ -1,6 +1,8 @@
 ;;;  -*- lexical-binding: t; -*-
 ;; Description: We must rebindng quite some binding to adapt to the bepo layout
 
+;; Circumflex cannot put input without that (deadkey)
+ (require 'iso-transl)
 
 ;;-------------------------------------------------------------------------------
  ;; Global movement j, k <-> t,s
