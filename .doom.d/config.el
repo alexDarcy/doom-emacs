@@ -20,6 +20,9 @@
 (load! "+org") ; Org configuration
 (load! "+torrents") ; mentor configuration
 
+;; Circumflex cannot put input without that (deadkey)
+ (require 'iso-transl)
+
 ;; French
 (setq calendar-week-start-day 1)
 (setq ispell-dictionary "francais")

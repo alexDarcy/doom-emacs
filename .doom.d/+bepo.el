@@ -43,7 +43,13 @@
  (:when (featurep! :ui popup)
        "C-à"   #'+popup/raise)
 
-
+  (:map pdf-view-mode-map
+   :n "n" #'pdf-view-next-page-command
+   :n "p" #'pdf-view-previous-page-command
+   :n "b" #'pdf-view-scroll-down-or-previous-page
+   :n "f" #'pdf-view-scroll-up-or-next-page
+   :n "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
+   :n "c" (cmd! (image-backward-hscroll 10)))
  ;; ;; Gnus : remap most used functions with 2 characters, g being the prefix
  ;; (:after gnus
  ;;  :map gnus-group-mode-map
@@ -195,14 +201,14 @@
    "jg"  #'treemacs-git-mode)
   )
 
- (:after pdf-tools
-  :map pdf-view-mode-map
-   :n "n" #'pdf-view-next-page-command
-   :n "p" #'pdf-view-previous-page-command
-   :n "b" #'pdf-view-scroll-down-or-previous-page
-   :n "f" #'pdf-view-scroll-up-or-next-page
-   :n "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
-   :n "c" (cmd! (image-backward-hscroll 10)))
+ ;; (:after pdf-tools
+ ;;  :map pdf-view-mode-map
+ ;;   :n "n" #'pdf-view-next-page-command
+ ;;   :n "p" #'pdf-view-previous-page-command
+ ;;   :n "b" #'pdf-view-scroll-down-or-previous-page
+ ;;   :n "f" #'pdf-view-scroll-up-or-next-page
+ ;;   :n "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
+ ;;   :n "c" (cmd! (image-backward-hscroll 10)))
 
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
