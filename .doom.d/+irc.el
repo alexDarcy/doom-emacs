@@ -38,4 +38,11 @@
                      :nick "biglama"
                      :sasl-username ,(+pass-get-user "irc/freenode.net")
                      :sasl-password (lambda (&rest _) (+pass-get-secret "irc/freenode.net"))
-                     :channels ("#freebsd"))))
+                     :channels ("#freebsd")))
+  (set-irc-server! "myanonamouse.net"
+                   `(:tls t
+                     :port 6697
+                     :nick "fitzwillydarcy"
+                     :sasl-username ,(+pass-get-user "irc/myanonamouse.net")
+                     :sasl-password (lambda (&rest _) (+pass-get-secret "irc/myanonamouse.net"))
+                     :channels (" #anonamouse.net"))))
