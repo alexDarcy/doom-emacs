@@ -16,8 +16,8 @@
         :checkers
         syntax          ; tasing you for every semicolon you forget
         (spell          ; tasing you for misspelling mispelling
-         +aspell) ; cannot use ispell for french, so we default to flyspell :
-                    ; see https://github.com/hlissner/doom-emacs/issues/3838
+         +flyspell) ; cannot use ispell for french, so we default to flyspell :
+         ;; +aspell) ; see https://github.com/hlissner/doom-emacs/issues/3838
 
         :completion
         company           ; the ultimate code completion backend

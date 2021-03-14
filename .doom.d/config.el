@@ -24,7 +24,8 @@
 
 ;; French
 (setq calendar-week-start-day 1)
-(setq ispell-dictionary "francais")
+;; Francais does not exist with aspell !
+(setq ispell-dictionary "fr")
 
 ; TODO : activate more properly ? Doom is lazy
 ;; Sometimes magit ask for SSH passphrase... Use keychain to avoid that
