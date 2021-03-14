@@ -27,6 +27,9 @@
         org-agenda-skip-deadline-if-done t
         org-deadline-warning-days 0)
 
+  ;; TODO: disable this as it keeps forever on my config
+  (setq org-agenda-dim-blocked-tasks nil)
+
   ;; But it's easier to use org-super-agenda !
   ;;Warning : org-agenda-tag-filter-preset is set for all the view !! Cannot be used in blocks
   (setq org-agenda-custom-commands
