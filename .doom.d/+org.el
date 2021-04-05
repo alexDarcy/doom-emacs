@@ -179,10 +179,10 @@ Norwegian curls: %^{Curls}
 Compression : %^{Compression}"
            )
 
-          ;; ("c" "Cookbook" entry (file "~/projects/blog/notes/cooking.org") ;; Needs org-chef
-          ;;  "%(org-chef-get-recipe-from-url)")
-          ;; ("m" "Manual Cookbook" entry (file "~/org/cookbook.org")
-          ;;  "* %^{Recipe title: }\n  :PROPERTIES:\n  :source-url:\n  :servings:\n  :prep-time:\n  :cook-time:\n  :ready-in:\n  :END:\n** Ingredients\n   %?\n** Directions\n\n")
+          ("c" "Cookbook" entry (file "~/projects/blog/notes/cooking.org") ;; Needs org-chef
+           "%(org-chef-get-recipe-from-url)")
+          ("m" "Manual Cookbook" entry (file "~/projects/blog/notes/cooking.org")
+           "* %^{Recipe title: }\n  :PROPERTIES:\n  :source-url:\n  :servings:\n  :prep-time:\n  :cook-time:\n  :ready-in:\n  :END:\n** Ingredients\n   %?\n** Directions\n\n")
           ))
   (add-load-path! "lisp")
 

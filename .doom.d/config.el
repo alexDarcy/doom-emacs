@@ -18,14 +18,19 @@
 (load! "+irc")
 (load! "+mail") ; Mail configuration
 (load! "+org") ; Org configuration
+(load! "+zathura") ; Opening pdf, epub
 (load! "+torrents") ; mentor configuration
 
 
+; Stop asking
+(setq doom-inhibit-large-file-detection t)
 
 ;; French
 (setq calendar-week-start-day 1)
 ;; Francais does not exist with aspell !
 (setq ispell-dictionary "fr")
+
+
 
 ; TODO : activate more properly ? Doom is lazy
 ;; Sometimes magit ask for SSH passphrase... Use keychain to avoid that

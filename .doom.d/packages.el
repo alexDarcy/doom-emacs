@@ -1,10 +1,10 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
+(package! openwith) ;; open PDF automatically
 (package! emms) ;; Manage music
 (package! ess) ;; R in emacs
 (package! evil-numbers) ; Increment numbers as in vim
-;; (package! dired-rsync) ; rsync in dired
 (package! fish-mode)
 (package! fish-completion) ; For eshell
 (package! gist) ; Github gist

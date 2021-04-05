@@ -117,8 +117,8 @@
         ;;ess               ; emacs speaks statistics
         ;;fsharp           ; ML stands for Microsoft's Language
         ;;go                ; the hipster dialect
-        (haskell +intero) ; a language that's lazier than I am
-        ;; (haskell +lsp)
+        ;; (haskell +intero) ; a language that's lazier than I am
+        (haskell +lsp) ; Fails to build haskell-language-server in  freebsd with stack (404 error)
         ;;hy                ; readability of scheme w/ speed of python
         ;;idris             ;
         ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
