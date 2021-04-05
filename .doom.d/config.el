@@ -56,13 +56,6 @@
   (setq password-cache t) ; enable password caching
   (setq password-cache-expiry 3600) ; for one hour (time in secs)
 
-  ;;   ;; Fish completion in eshell.
-  ;;   ;; The doc tells us to use "nil t" as argument but it does not work in doom...
-  ;;   (when (and (executable-find "fish")
-  ;;              (require 'fish-completion)
-  ;;              (global-fish-completion-mode))))
-  )
-
 ;; ----- Emms
 ;; NB : :commands allow to load emms only when needed. Also `(require)' is replaced by def-package
 (map!
@@ -92,15 +85,15 @@
   ;;   ("<XF86AudioStop>" . emms-stop))
   )
 
-;; LSP
-;; Haskell : using ghcide instead of haskell-ide (completion hangs when using it...)
-(after! lsp-haskell
-  :config
-  (setq lsp-haskell-process-path-hie "ghcide")
-  (setq lsp-haskell-process-args-hie '())
-  ;; Comment/uncomment this line to see interactions between lsp client/server.
-  ;;(setq lsp-log-io t)
-  )
+;; ;; LSP
+;; ;; Haskell : using ghcide instead of haskell-ide (completion hangs when using it...)
+;; (after! lsp-haskell
+;;   :config
+;;   (setq lsp-haskell-process-path-hie "ghcide")
+;;   (setq lsp-haskell-process-args-hie '())
+;;   ;; Comment/uncomment this line to see interactions between lsp client/server.
+;;   ;;(setq lsp-log-io t)
+;;   )
 
 (after! elfeed
   :config
@@ -122,56 +115,8 @@
         ytdl-video-folder (expand-file-name "~/videos"))
   )
 
-;; Doom disables some latex pairs, here is an example on how to enable them
-;; (after! latex
-;;   (sp-with-modes '(tex-mode
-;;                    plain-tex-mode
-;;                    latex-mode
-;;                    LaTeX-mode)
-;;     (sp-local-pair "\\left(" "\\right)"
-;;                    :trigger "\\l("
-;;                    :when '(sp-in-math-p)
-;;                    :post-handlers '(sp-latex-insert-spaces-inside-pair)))
-
-;; Circe + bitlbee does not work
-;; (after! irc
-;;    (set-irc-server! "Bitlbee"
-;;      '(:host "localhost" :port 6667
-;;             :nick "alex"
-;;             :nickserv-password "sharingan"
-;;             :nickserv-identify-challenge "use the \x02identify\x02 command to identify yourself"
-;;             :nickserv-identify-command "PRIVMSG &bitlbee :identify {password}"
-;;             :nickserv-identify-confirmation "Password accepted, settings and accounts loaded"
-;;             :lagmon-disabled t)))
-;; (use-package! circe
-;;   :config
-;;   (setq circe-network-options
-;;    '(("Bitlbee"
-;;       :host "localhost" :port 6667
-;;       :nick "alex"
-;;       :nickserv-password "sharingan"
-;;       :nickserv-identify-challenge "use the \x02identify\x02 command to identify yourself"
-;;       :nickserv-identify-command "PRIVMSG &bitlbee :identify {password}"
-;;       :nickserv-identify-confirmation "Password accepted, settings and accounts loaded"
-;;       :lagmon-disabled t))))
-
-
-;; ;; Reading RSS feeds : not longeur
-;; ;; Issue with org config
-;; (use-package! elfeed
-;;   :init
-;;   (map!
-;;    (:leader
-;;      (:prefix "o"
-;;        (:desc "RSS" "R" 'elfeed))))
-;;   :config
-;;   (elfeed-org)
-;;   (setq rmh-elfeed-org-files (list "~/.doom.d/rss.org"))
-;;   (setq-default elfeed-search-filter "@2-days-ago +unread ")
-;; )
-
-(setq pdf-misc-print-program "/usr/bin/lpr")
-(setq pdf-misc-print-program-args "-PBrother_HL-1110_series")
+;; (setq pdf-misc-print-program "/usr/bin/lpr")
+;; (setq pdf-misc-print-program-args "-PBrother_HL-1110_series")
 
 ;; Testing ripgrep-all
 ;; (setq counsel-rg-base-command "rga -M 240 --with-filename --no-heading --line-number --color never %s")

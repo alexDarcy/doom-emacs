@@ -45,6 +45,7 @@
  (:when (featurep! :ui popup)
        "C-à"   #'+popup/raise)
 
+ ;; Must be loaded manually
  (:after pdf-tools
   :map pdf-view-mode-map
    :n "n" #'pdf-view-next-page-command
@@ -175,6 +176,7 @@
 
  (:after dired
    (:map dired-mode-map
+   "M-(" nil ; conflict with workspaces
     :n "t" 'evil-next-line ; Swap t <-> j
     :n "j" 'dired-toggle-mark ; Swap t <-> j
     :n "h" 'dired-up-directory ;; Better than ^ twice on bepo
