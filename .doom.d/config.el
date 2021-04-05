@@ -23,7 +23,7 @@
 
 
 ; Stop asking
-(setq doom-inhibit-large-file-detection t)
+(setq large-file-warning-threshold nil)
 
 ;; French
 (setq calendar-week-start-day 1)
