@@ -55,6 +55,7 @@
   (set-eshell-alias! "sudo"  "eshell/sudo $*")
   (setq password-cache t) ; enable password caching
   (setq password-cache-expiry 3600) ; for one hour (time in secs)
+)
 
 ;; ----- Emms
 ;; NB : :commands allow to load emms only when needed. Also `(require)' is replaced by def-package
