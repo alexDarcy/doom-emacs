@@ -33,6 +33,8 @@
 
   ;; Disable all popup
   (set-popup-rule! "^\\*notmuch" :ignore t)
+  ;; Openwith conflict with sending mails with attachemnt without this ...
+  (add-to-list 'mm-inhibit-file-name-handlers 'openwith-file-handler)
 
 ;;  Some mapping are overriden by eval commands so we need to remap them
  (map! (:after notmuch
