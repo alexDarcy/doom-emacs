@@ -17,8 +17,8 @@
   (require 'org-habit)
 
   ;; My agenda files
-  (setq org-agenda-files (list "~/projects/blog/notes/revisions.org"
-                               "~/projects/blog/notes/todo.org"
+  (setq org-agenda-files (list "~/projects/blog/revisions.org"
+                               "~/projects/blog/todo.org"
                                "~/projects/sir/sir.org"))
   ;; Common variables for org-agenda
   ;; Important : agenda view does not show notes with imcomplete parents in Doom
@@ -223,35 +223,6 @@ Compression : %^{Compression}"
           ("PROJ" . +org-todo-project)
           ("TOUR1" . +org-todo-onhold)
           ("TOUR2" . +org-todo-project)
-          ))
-
-
-  (require 'ox-publish)
-
-  (setq org-html-html5-fancy t
-        org-html-doctype "html5")
-        ;; org-html-head blog-html-head);; Can't set it in org-publish-project-alist...
-  (setq org-publish-project-alist
-        '(
-          ("blog"
-           :base-directory "~/projects/blog/"
-           :base-extension "org"
-           :publishing-directory "~/projects/blog/html/"
-           :recursive t
-           :with-toc nil
-           ;; does not work
-           :exclude "[[:digit:]]\{10\}.*.org"
-           :html-style nil
-           :html5-fancy nil
-           ;; Custom CSS
-           ;; Ugly but I can't make variables works
-           :html-head "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">
-<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-<link href=\"https://taopeng.me/org-notes-style/css/notes.css\" rel=\"stylesheet\" type=\"text/css\" />"
-           :publishing-function org-html-publish-to-html
-           :headline-levels 4             ; Just the default for this project.
-           :auto-sitemap t
-           )
           ))
   )
 
