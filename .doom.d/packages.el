@@ -19,6 +19,7 @@
 (package! org-roam) ;; Note-taking workflow
 (package! org-super-agenda) ;; Better agenda : group by tags and so on
 (package! projectile-ripgrep) ; I like ripgrep
+(package! simple-mpc) ; I like ripgrep
 ;; (package! zetteldeft) ; manage Note-taking
 ;; (package! ytdl) ; interface to youtupe-dl
 (package! yasnippet-snippets) ; List of snippets

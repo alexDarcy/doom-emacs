@@ -20,7 +20,7 @@
 (load! "+org") ; Org configuration
 (load! "+zathura") ; Opening pdf, epub
 (load! "+torrents") ; mentor configuration
-
+(load! "+music") ; mentor configuration
 
 ; Stop asking
 (setq large-file-warning-threshold nil)
@@ -56,45 +56,6 @@
   (setq password-cache t) ; enable password caching
   (setq password-cache-expiry 3600) ; for one hour (time in secs)
 )
-
-;; ----- Emms
-;; NB : :commands allow to load emms only when needed. Also `(require)' is replaced by def-package
-(map!
- (:leader
-  (:prefix-map ("o" . "open")
-   (:desc "Emms" "m" #'emms)
-   )))
-
-(use-package emms
-  :config
-    (require 'emms-setup)
-    (require 'emms-player-mpd)
-    (emms-all) ; don't change this to values you see on stackoverflow questions if you expect emms to work
-    ;; (setq emms-seek-seconds 5)
-    (setq emms-player-list '(emms-player-mpd))
-    (setq emms-info-functions '(emms-info-mpd))
-    ;; Socket is not supported
-    (setq emms-player-mpd-server-name "localhost")
-    (setq emms-player-mpd-server-port "6600")
-  ;; :bind
-  ;;   ("s-m p" . emms)
-  ;;   ("s-m b" . emms-smart-browse)
-  ;;   ("s-m r" . emms-player-mpd-update-all-reset-cache)
-  ;;   ("<XF86AudioPrev>" . emms-previous)
-  ;;   ("<XF86AudioNext>" . emms-next)
-  ;;   ("<XF86AudioPlay>" . emms-pause)
-  ;;   ("<XF86AudioStop>" . emms-stop))
-  )
-
-;; ;; LSP
-;; ;; Haskell : using ghcide instead of haskell-ide (completion hangs when using it...)
-;; (after! lsp-haskell
-;;   :config
-;;   (setq lsp-haskell-process-path-hie "ghcide")
-;;   (setq lsp-haskell-process-args-hie '())
-;;   ;; Comment/uncomment this line to see interactions between lsp client/server.
-;;   ;;(setq lsp-log-io t)
-;;   )
 
 (after! elfeed
   :config
