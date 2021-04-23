@@ -275,7 +275,7 @@ Compression : %^{Compression}"
         :desc "insert" "i" #'org-roam-insert
         :desc "find file" "f" #'org-roam-find-file)
   :config
-  (setq org-roam-directory "~/projects/blog/"))
+  (setq org-roam-directory "/home/alex/projects/blog/"))
 
 (add-hook 'after-init-hook 'org-roam-mode)
 

@@ -20,6 +20,9 @@
        :desc "Search " "s" #'notmuch-search
        :desc "Home " "h" #'notmuch))))
   :config
+
+  ;; By default, go to home
+  (setq +notmuch-home-function (lambda () (notmuch-search "tag:inbox")))
   ;; (setq sendmail-program  "/usr/bin/msmtp" ;; Linux
   (setq sendmail-program  "/usr/local/bin/msmtp" ;; Freebsd
         notmuch-archive-tags '("-inbox" "-unread" "-new" "+archived")
