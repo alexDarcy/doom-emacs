@@ -1,5 +1,8 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
+
+(load! "+exwm")
+
 ;; Warning: using emacs daemon + emacsclient -nc lose the highlight. So we need
 ;; to reload the theme each time we start a new emacs.
 ;; SPC h r t (or M-x doom/reload-theme)

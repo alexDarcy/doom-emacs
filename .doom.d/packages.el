@@ -1,6 +1,8 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
 
+(package! exwm)
+
 (package! openwith) ;; open PDF automatically
 (package! emms) ;; Manage music
 (package! ess) ;; R in emacs
