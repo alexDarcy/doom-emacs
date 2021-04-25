@@ -4,7 +4,7 @@
 ;; Org
 ;;-------------------------------------------------------------------------------
 ;; Org roam
-(setq org-roam-directory "~/projects/blog/notes")
+(setq org-roam-directory "~/projects/blog")
 
 ;; Cannot have composite views in normal agenda with tags. Super-aegnda does that
 (use-package! org-super-agenda
