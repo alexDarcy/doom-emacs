@@ -30,6 +30,9 @@
 ;; Francais does not exist with aspell !
 (setq ispell-dictionary "fr")
 
+;; shell-comands fails to run commands with fish shell (commands should be escaped)
+;; This impact fd and find in dired for example
+(setq shell-file-name "/bin/sh")
 
 
 ; TODO : activate more properly ? Doom is lazy
