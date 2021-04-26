@@ -1,7 +1,6 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
 
-(load! "+exwm")
 
 ;; Warning: using emacs daemon + emacsclient -nc lose the highlight. So we need
 ;; to reload the theme each time we start a new emacs.
@@ -15,6 +14,7 @@
       ;; )
 ;; (setq doom-unicode-font doom-font)
 
+(load! "+exwm") ; Emas as windows manager
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration
@@ -22,7 +22,7 @@
 (load! "+mail") ; Mail configuration
 (load! "+org") ; Org configuration
 (load! "+zathura") ; Opening pdf, epub
-(load! "+torrents") ; mentor configuration
+;; (load! "+torrents") ; mentor configuration
 (load! "+music") ; mentor configuration
 
 ; Stop asking
@@ -37,6 +37,8 @@
 ;; This impact fd and find in dired for example
 (setq shell-file-name "/bin/sh")
 
+ ;; Fast buffer jump
+(use-package! frog-jump-buffer)
 
 ; TODO : activate more properly ? Doom is lazy
 ;; Sometimes magit ask for SSH passphrase... Use keychain to avoid that
@@ -63,25 +65,25 @@
   (setq password-cache-expiry 3600) ; for one hour (time in secs)
 )
 
-(after! elfeed
-  :config
-  (setq elfeed-feeds
-        '("https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw")))
-; No flyspell by default
-(remove-hook! '(org-mode-hook
-                markdown-mode-hook
-                TeX-mode-hook
-                rst-mode-hook
-                mu4e-compose-mode-hook
-                message-mode-hook
-                git-commit-mode-hook)
-  #'flyspell-mode)
+;; (after! elfeed
+;;   :config
+;;   (setq elfeed-feeds
+;;         '("https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw")))
+;; ; No flyspell by default
+;; (remove-hook! '(org-mode-hook
+;;                 markdown-mode-hook
+;;                 TeX-mode-hook
+;;                 rst-mode-hook
+;;                 mu4e-compose-mode-hook
+;;                 message-mode-hook
+;;                 git-commit-mode-hook)
+;;   #'flyspell-mode)
 
-(after! ytdl
-  :config
-  (setq ytdl-always-query-default-filename "yes"
-        ytdl-video-folder (expand-file-name "~/videos"))
-  )
+;; (after! ytdl
+;;   :config
+;;   (setq ytdl-always-query-default-filename "yes"
+;;         ytdl-video-folder (expand-file-name "~/videos"))
+;;   )
 
 ;; (setq pdf-misc-print-program "/usr/bin/lpr")
 ;; (setq pdf-misc-print-program-args "-PBrother_HL-1110_series")

@@ -4,6 +4,7 @@
 ;; Circumflex cannot put input without that (deadkey)
  (require 'iso-transl)
 
+
 ;;-------------------------------------------------------------------------------
  ;; Global movement j, k <-> t,s
 ;;-------------------------------------------------------------------------------
@@ -224,7 +225,7 @@
   "<" nil
   "~" nil
   (:when (featurep! :ui workspaces)
-    :desc "Switch buffer"           "«" #'switch-to-buffer
+    :desc "Switch buffer"           "«" #'frog-jump-buffer
     )
   (:when (featurep! :ui popup)
    :desc "Toggle last popup"     "ê"    #'+popup/toggle)
