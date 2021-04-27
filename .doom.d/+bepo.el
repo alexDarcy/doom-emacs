@@ -207,6 +207,24 @@
    "jg"  #'treemacs-git-mode)
   )
 
+ ;; (:after frog-jump-buffer
+ ;;  :config
+
+  ;; (setq frog-menu-avy-keys (append (string-to-list "asdflkjgh")
+  ;;                                  (string-to-list "qwerpoiuty")
+  ;;                                  (string-to-list "zxcvmnb")
+  ;;                                  (string-to-list (upcase "asdflkjgh"))
+  ;;                                  (string-to-list (upcase "qwerpoiuty"))
+  ;;                                  (string-to-list (upcase "zxcvmnb"))
+  ;;                                  (number-sequence ?, ?@))))
+  ;; (setq frog-menu-avy-keys (append (string-to-list "asdflkjgh")
+  ;;                                  (string-to-list "qwerpoiuty")
+  ;;                                  (string-to-list "zxcvmnb")
+  ;;                                  (string-to-list (upcase "asdflkjgh"))
+  ;;                                  (string-to-list (upcase "qwerpoiuty"))
+  ;;                                  (string-to-list (upcase "zxcvmnb"))
+  ;;                                  (number-sequence ?, ?@))))
+
  ;; (:after pdf-tools
  ;;  :map pdf-view-mode-map
  ;;   :n "n" #'pdf-view-next-page-command
@@ -219,7 +237,6 @@
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------
-
 (:leader
   ;; Switch buffer with space + "«" instead of space + "<"
   "<" nil
@@ -234,3 +251,12 @@
    :desc "Org-rifle (org directory)"               "è" #'helm-org-rifle-org-directory) ; slower
   )
 )
+
+(after! avy
+ :config
+ (setq avy-keys '(?a ?u ?i ?e ?, ?c ?t ?s ?r ?r ?n ?m)))
+
+(after! frog-menu
+  (setq frog-menu-avy-keys (append (string-to-list "auie,ctsrnm")
+                                   (string-to-list "bépoèdljzw")
+                                   (string-to-list "êàyx.k'qghf"))))
