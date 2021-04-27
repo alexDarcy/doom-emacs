@@ -14,15 +14,7 @@
   (unless (get 'exwm-input-global-keys 'saved-value)
     (setq exwm-input-global-keys
           `(
-            (,(kbd "s-p") . counsel-linux-app) ;; Start an application, such as google-chrome
-            (,(kbd "s-m") . (lambda () ;; Toggle display of mode-line and minibuffer, in an EXWM window
-                              (interactive)
-                              (exwm-layout-toggle-mode-line)
-                              (exwm-workspace-toggle-minibuffer)))
-            (,(kbd "s-i") . exwm-input-toggle-keyboard) ;; Toggle between "line-mode" and "char-mode" in an EXWM window
-            (,(kbd "s-Q") . exwm-reset) ;; Try to reset EXWM to a sane mode. Panic key
-            ;; Interactively select, and switch to, a workspace. Only works in non EXWM windows.
-            (,(kbd "s-b") . ivy-switch-buffer)
+            ;;--- Workspaces
             (,(kbd "s-w") . exwm-workspace-switch)
             ;; Switch to a certain workspace using bepo layout
             ,@(cl-mapcar (lambda (c n)
@@ -40,7 +32,7 @@
                             (exwm-workspace-move-window ,i)
                             (exwm-workspace-switch ,i))))
                       (number-sequence 1 6))
-            ;; Windows management
+            ;;---  Windows management
             (,(kbd "s-c") . windmove-left)  ;; Move to window to the left of current one. Uses universal arg
             (,(kbd "s-t") . windmove-down)  ;; Move to window below current one. Uses universal arg
             (,(kbd "s-s") . windmove-up)    ;; Move to window above current one. Uses universal arg
@@ -48,10 +40,18 @@
             (,(kbd "s-h") . evil-window-split) ;; Split horizontally
             (,(kbd "s-v") . evil-window-vsplit) ;; Split vertzontally
             (,(kbd "s-w") . ace-window) ;; select a windows (does not work well with graphical programs)
-            (,(kbd "s-f") . counsel-find-files)
+            ;;--- Exwm stuff
             (,(kbd "s-F") . exwm-floating-toggle-floating) ;; Toggle the current window between floating and non-floating states
+            (,(kbd "s-i") . exwm-input-toggle-keyboard) ;; Toggle between "line-mode" and "char-mode" in an EXWM window
             (,(kbd "s-Q") . exwm-layout-toggle-fullscreen) ;; Toggle fullscreen mode, when in an EXWM window.
-            ;; Program
+            (,(kbd "s-R") . exwm-reset) ;; Try to reset EXWM to a sane mode. Panic key
+            ;;-- Buffer and other navigations
+            (,(kbd "s-b") . ivy-switch-buffer)
+            (,(kbd "s-B") . kill-buffer)
+            (,(kbd "s-e") . eshell)
+            (,(kbd "s-f") . counsel-find-file)
+            (,(kbd "s-m") . counsel-bookmark)
+            (,(kbd "s-p") . counsel-linux-app) ;; Start an application, such as google-chrome
             )))
   ;; Line-editing shortcuts
   (unless (get 'exwm-input-simulation-keys 'saved-value)
@@ -74,9 +74,7 @@
 
 (require 'exwm)
 (require 'exwm-config)
-(exwm-config-custom) ;; oerride exwm-config-example
+(exwm-config-custom) ;; oerride exwm-config-example. The -dock option is important !
 
-                                        ; Does not work ??
-(require 'exwm-systemtray)
-(exwm-systemtray-enable)
-(setq exwm-systemtray-height 30)
+;; No need for system tray, we just start conky and dzen2
+(start-process-shell-command "mytray" nil "conky | dzen2 -ta r -dock")
