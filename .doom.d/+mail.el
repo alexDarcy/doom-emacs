@@ -44,4 +44,5 @@
          (:map notmuch-common-keymap
            :nm "gr"     #'notmuch-refresh-this-buffer)))
 
-  )
+ (require 'ebdb-notmuch)
+ )

@@ -1,7 +1,5 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-
-
 ;; Warning: using emacs daemon + emacsclient -nc lose the highlight. So we need
 ;; to reload the theme each time we start a new emacs.
 ;; SPC h r t (or M-x doom/reload-theme)
@@ -9,19 +7,15 @@
 ;; (setq doom-one-brighter-comments t) ;; We want the comments visible
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 12))
-      ;; doom-unicode-font (font-spec :family "MesloLGS NF" :size 12)
-      ;; doom-variable-pitch-font (font-spec :family "MesloLGS NF")
-      ;; )
-;; (setq doom-unicode-font doom-font)
 
-(load! "+exwm") ; Emas as windows manager
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration
+(load! "+exwm") ; Emas as windows manager
 (load! "+irc")
 (load! "+mail") ; Mail configuration
+(load! "+open") ; Opening pdf, movies etc
 (load! "+org") ; Org configuration
-(load! "+zathura") ; Opening pdf, epub
 ;; (load! "+torrents") ; mentor configuration
 (load! "+music") ; mentor configuration
 
