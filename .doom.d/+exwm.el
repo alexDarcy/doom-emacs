@@ -41,15 +41,18 @@
             (,(kbd "s-v") . evil-window-vsplit) ;; Split vertzontally
             (,(kbd "s-w") . ace-window) ;; select a windows (does not work well with graphical programs)
             ;;--- Exwm stuff
-            (,(kbd "s-F") . exwm-floating-toggle-floating) ;; Toggle the current window between floating and non-floating states
+            (,(kbd "s-è") . exwm-floating-toggle-floating) ;; Toggle the current window between floating and non-floating states
             (,(kbd "s-i") . exwm-input-toggle-keyboard) ;; Toggle between "line-mode" and "char-mode" in an EXWM window
-            (,(kbd "s-Q") . exwm-layout-toggle-fullscreen) ;; Toggle fullscreen mode, when in an EXWM window.
+            (,(kbd "s-é") . exwm-layout-toggle-fullscreen) ;; Toggle fullscreen mode, when in an EXWM window.
             (,(kbd "s-R") . exwm-reset) ;; Try to reset EXWM to a sane mode. Panic key
             ;;-- Buffer and other navigations
             (,(kbd "s-b") . ivy-switch-buffer)
             (,(kbd "s-B") . kill-buffer)
             (,(kbd "s-e") . eshell)
             (,(kbd "s-f") . counsel-find-file)
+            (,(kbd "s-F") . (lambda ()
+                              (interactive)
+                              (start-file-process-shell-command "firefox" nil "firefox")))
             (,(kbd "s-m") . counsel-bookmark)
             (,(kbd "s-p") . counsel-linux-app) ;; Start an application, such as google-chrome
             )))
