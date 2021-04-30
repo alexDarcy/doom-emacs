@@ -32,17 +32,21 @@
 ;; Otherwise, use circe
 ;; if you omit =:host=, ~SERVER~ will be used instead.
 (after! circe
+  :config
   (set-irc-server! "chat.freenode.net"
                    `(:tls t
                      :port 6697
                      :nick "biglama"
                      :sasl-username ,(+pass-get-user "irc/freenode.net")
                      :sasl-password (lambda (&rest _) (+pass-get-secret "irc/freenode.net"))
-                     :channels ("#freebsd")))
+                     :channels ("#freebsd" "#haskell")))
   (set-irc-server! "myanonamouse.net"
                    `(:tls t
                      :port 6697
                      :nick "fitzwillydarcy"
                      :sasl-username ,(+pass-get-user "irc/myanonamouse.net")
                      :sasl-password (lambda (&rest _) (+pass-get-secret "irc/myanonamouse.net"))
-                     :channels (" #anonamouse.net"))))
+                     :channels (" #anonamouse.net")))
+  ;; no joins, quits etc
+  (setq circe-reduce-lurker-spam t)
+  )

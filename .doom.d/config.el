@@ -11,7 +11,7 @@
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration
-(load! "+exwm") ; Emas as windows manager
+;; (load! "+exwm") ; Emas as windows manager
 (load! "+irc")
 (load! "+mail") ; Mail configuration
 (load! "+open") ; Opening pdf, movies etc
@@ -46,7 +46,7 @@
   (setq company-idle-delay 0))
 
 ;; Disable spell checking by default
-(remove-hook 'text-mode-hook #'spell-fu-mode)
+(remove-hook 'text-mode-hook #'flyspell-mode)
 
 (after! eshell
   :config
@@ -59,19 +59,13 @@
   (setq password-cache-expiry 3600) ; for one hour (time in secs)
 )
 
+;; --- Haskell
+(setq haskell-interactive-popup-errors nil)
+
 ;; (after! elfeed
 ;;   :config
 ;;   (setq elfeed-feeds
 ;;         '("https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw")))
-;; ; No flyspell by default
-;; (remove-hook! '(org-mode-hook
-;;                 markdown-mode-hook
-;;                 TeX-mode-hook
-;;                 rst-mode-hook
-;;                 mu4e-compose-mode-hook
-;;                 message-mode-hook
-;;                 git-commit-mode-hook)
-;;   #'flyspell-mode)
 
 ;; (after! ytdl
 ;;   :config
