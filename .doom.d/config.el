@@ -46,7 +46,20 @@
   (setq company-idle-delay 0))
 
 ;; Disable spell checking by default
-(remove-hook 'text-mode-hook #'flyspell-mode)
+(remove-hook! '(org-mode-hook
+                 markdown-mode-hook
+                 TeX-mode-hook
+                 rst-mode-hook
+                 mu4e-compose-mode-hook
+                 message-mode-hook
+                 git-commit-mode-hook)
+               #'flyspell-mode)
+
+    (when (featurep! +everywhere)
+      (add-hook! '(yaml-mode-hook
+                   conf-mode-hook
+                   prog-mode-hook)
+                 #'flyspell-prog-mode))
 
 (after! eshell
   :config
