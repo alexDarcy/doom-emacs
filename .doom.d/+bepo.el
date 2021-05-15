@@ -207,24 +207,6 @@
    "jg"  #'treemacs-git-mode)
   )
 
- ;; (:after frog-jump-buffer
- ;;  :config
-
-  ;; (setq frog-menu-avy-keys (append (string-to-list "asdflkjgh")
-  ;;                                  (string-to-list "qwerpoiuty")
-  ;;                                  (string-to-list "zxcvmnb")
-  ;;                                  (string-to-list (upcase "asdflkjgh"))
-  ;;                                  (string-to-list (upcase "qwerpoiuty"))
-  ;;                                  (string-to-list (upcase "zxcvmnb"))
-  ;;                                  (number-sequence ?, ?@))))
-  ;; (setq frog-menu-avy-keys (append (string-to-list "asdflkjgh")
-  ;;                                  (string-to-list "qwerpoiuty")
-  ;;                                  (string-to-list "zxcvmnb")
-  ;;                                  (string-to-list (upcase "asdflkjgh"))
-  ;;                                  (string-to-list (upcase "qwerpoiuty"))
-  ;;                                  (string-to-list (upcase "zxcvmnb"))
-  ;;                                  (number-sequence ?, ?@))))
-
  ;; (:after pdf-tools
  ;;  :map pdf-view-mode-map
  ;;   :n "n" #'pdf-view-next-page-command
@@ -237,20 +219,23 @@
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------
-(:leader
+ (:leader
   ;; Switch buffer with space + "«" instead of space + "<"
   "<" nil
   "~" nil
   (:when (featurep! :ui workspaces)
-    :desc "Switch buffer"           "«" #'frog-jump-buffer
-    )
+   :desc "Switch buffer"           "«" #'frog-jump-buffer
+   )
   (:when (featurep! :ui popup)
    :desc "Toggle last popup"     "ê"    #'+popup/toggle)
-  (:prefix-map ("s" . "search")
-   :desc "Org-rifle (opened files)"                "é" #'helm-org-rifle ; é in reference to evil snipe
-   :desc "Org-rifle (org directory)"               "è" #'helm-org-rifle-org-directory) ; slower
-  )
-)
+  (:prefix-map ("é" . "Org-rifle"); é in reference to evil snipe
+   :desc "Agenda"                  "a" #'helm-org-rifle-agenda-files
+   :desc "Agenda (occur)"          "A" #'helm-org-rifle-occur-agenda-files
+   :desc "Org directories"         "d" #'helm-org-rifle-directories
+   :desc "Org directories (occur)" "D" #'helm-org-rifle-occur-directories
+   :desc "Opened files"            "o" #'helm-org-rifle
+   :desc "Opened files (occur)"    "O" #'helm-org-rifle-occur))
+ )
 
 (after! avy
  :config

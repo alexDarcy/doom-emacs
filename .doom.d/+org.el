@@ -77,7 +77,7 @@
  
   ;; For org-rifle:
   ;; helm-org-rifle-org-directory to search notes
-  (setq org-directory "~/projects/blog/notes")
+  (setq org-directory "~/projects/blog")
 
   ;; Generate papers from org mode with biblatex
   (setq org-latex-pdf-process '("latexmk -pdflatex='lualatex --shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))

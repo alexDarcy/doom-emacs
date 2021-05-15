@@ -55,12 +55,6 @@
                  git-commit-mode-hook)
                #'flyspell-mode)
 
-    (when (featurep! +everywhere)
-      (add-hook! '(yaml-mode-hook
-                   conf-mode-hook
-                   prog-mode-hook)
-                 #'flyspell-prog-mode))
-
 (after! eshell
   :config
   (require 'em-tramp) ; to load eshell’s sudo
