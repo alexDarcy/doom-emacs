@@ -1,5 +1,6 @@
 ;;;  -*- lexical-binding: t; -*-
 ;; Description: We must rebindng quite some binding to adapt to the bepo layout
+;; Doom has a bepo layout but I prefer mine
 
 ;; Circumflex cannot put input without that (deadkey)
  (require 'iso-transl)
@@ -224,7 +225,9 @@
   "<" nil
   "~" nil
   (:when (featurep! :ui workspaces)
-   :desc "Switch buffer"           "«" #'frog-jump-buffer
+   ;; Using both: frog for recent, ivy for completion
+   :desc "Switch buffer (frog)"    "«" #'frog-jump-buffer
+   :desc "Switch buffer (ivy)"     "»" #'ivy-switch-buffer
    )
   (:when (featurep! :ui popup)
    :desc "Toggle last popup"     "ê"    #'+popup/toggle)
@@ -237,9 +240,10 @@
    :desc "Opened files (occur)"    "O" #'helm-org-rifle-occur))
  )
 
-(after! avy
- :config
- (setq avy-keys '(?a ?u ?i ?e ?, ?c ?t ?s ?r ?r ?n ?m)))
+;; Jump with avy
+(setq avy-keys '(?a ?u ?i ?e ?, ?c ?t ?s ?r ?r ?n ?m))
+(after! ace-window
+  (setq aw-keys '(?a ?u ?i ?e ?, ?c ?t ?s ?r ?n)))
 
 (after! frog-menu
   (setq frog-menu-avy-keys (append (string-to-list "auie,ctsrnm")
