@@ -84,10 +84,10 @@
 
  ;; Calendar motion
   (:map calendar-mode-map
-   :nm "r" 'calendar-forward-day
    :nm "c" 'calendar-backward-day
-   :nm "s" 'calendar-forward-week
-   :nm "t" 'calendar-backward-week
+   :nm "t" 'calendar-forward-week
+   :nm "s" 'calendar-backward-week
+   :nm "r" 'calendar-forward-day
   )
 
   ;; Surprisingly overridden

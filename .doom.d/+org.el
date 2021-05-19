@@ -82,7 +82,16 @@
   ;; Generate papers from org mode with biblatex
   (setq org-latex-pdf-process '("latexmk -pdflatex='lualatex --shell-escape -interaction nonstopmode' -pdf -bibtex -f %f"))
 
-  ;; ;; Calfw : we need the possibility to have parents nodes for an event.
+;; Calfw : custom function to show only one calendar
+(defun study-calendar ()
+  (interactive)
+  (cfw:open-calendar-buffer
+   :contents-sources
+   (list
+    (cfw:org-create-file-source "cal" "~/projects/blog/revisions.org" "Cyan")  ; other org source
+   )))
+
+
   ;; ;; Could not figure it out
   ;; (require 'calfw)
   ;; (require 'calfw-org)
