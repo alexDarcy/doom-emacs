@@ -35,12 +35,10 @@
   (setq org-agenda-custom-commands
         '(("r" "Revisions (today)"
            ((agenda "" ((org-agenda-span 1))))
-           ((org-agenda-filter-preset '("+revisions")))
-           )
+           ((org-agenda-filter-preset '("+revisions"))))
           ("R" "Revisions (14 days)"
            ((agenda "" ((org-agenda-span 14))))
-           ((org-agenda-filter-preset '("+revisions")))
-           )
+           ((org-agenda-filter-preset '("+revisions"))))
          ("d" "daily"
            ((agenda "" ((org-agenda-span 1))))
            ((org-agenda-filter-preset '("+daily"))))

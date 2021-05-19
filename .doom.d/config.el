@@ -14,10 +14,10 @@
 ;; (load! "+exwm") ; Emas as windows manager
 (load! "+irc")
 (load! "+mail") ; Mail configuration
+(load! "+music") ; mentor configuration
 (load! "+open") ; Opening pdf, movies etc
 (load! "+org") ; Org configuration
 ;; (load! "+torrents") ; mentor configuration
-(load! "+music") ; mentor configuration
 
 ; Stop asking
 (setq large-file-warning-threshold nil)

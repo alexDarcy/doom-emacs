@@ -9,12 +9,7 @@
    )))
 
 ;; -- Emms with mpd has some bugs being corrected, so we use dired + emms
-(use-package emms
+(after! emms
   :config
-  (require 'emms-setup)
-  (emms-all)
-  (emms-default-players)
-  (setq emms-source-file-default-directory "/data/music/")
-
   (map! :map dired-mode-map :n "M" 'emms-add-dired)
   )

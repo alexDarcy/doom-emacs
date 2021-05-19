@@ -55,7 +55,11 @@
    :n "b" #'pdf-view-scroll-down-or-previous-page
    :n "f" #'pdf-view-scroll-up-or-next-page
    :n "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
-   :n "c" (cmd! (image-backward-hscroll 10)))
+   :n "c" (cmd! (image-backward-hscroll 10))
+  :nm "t" 'evil-next-line
+  :nm "s" 'evil-prev-line
+   )
+
  ;; ;; Gnus : remap most used functions with 2 characters, g being the prefix
  ;; (:after gnus
  ;;  :map gnus-group-mode-map
