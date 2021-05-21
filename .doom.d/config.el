@@ -14,7 +14,7 @@
       ;; )
 ;; (setq doom-unicode-font doom-font)
 
-(load! "+exwm") ; Emas as windows manager
+;; (load! "+exwm") ; Emas as windows manager
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration

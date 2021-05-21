@@ -76,7 +76,13 @@
 (require 'exwm-config)
 (exwm-config-custom) ;; oerride exwm-config-example
 
-                                        ; Does not work ??
-(require 'exwm-systemtray)
-(exwm-systemtray-enable)
-(setq exwm-systemtray-height 30)
+;; Status bar with conky
+;; Make some space
+;; (require 'exwm-systemtray)
+;; (exwm-systemtray-enable)
+;; (setq exwm-systemtray-height 20)
+;; Show conky
+;; (async-shell-command "/usr/bin/fish /home/alex/scripts/dzen_exwm.fish")
+;; Use modeline instead to show battery + load
+(display-battery-mode)
+(display-time-mode)
