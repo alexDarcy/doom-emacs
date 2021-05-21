@@ -9,9 +9,8 @@
   (openwith-mode 1)
   (setq openwith-associations
         (list
-         (list (openwith-make-extension-regexp
-                '("pdf" "epub"))
-               "zathura"
-               '(file))
-         ))
-  )
+         (list (openwith-make-extension-regexp '("epub"))
+               "zathura" '(file))
+         (list (openwith-make-extension-regexp '("mkv"))
+               "mpv" '(file))
+         )))

@@ -1,5 +1,6 @@
 ;;;  -*- lexical-binding: t; -*-
 ;; Description: We must rebindng quite some binding to adapt to the bepo layout
+;; Doom has a bepo layout but I prefer mine
 
 ;; Circumflex cannot put input without that (deadkey)
  (require 'iso-transl)
@@ -54,7 +55,11 @@
    :n "b" #'pdf-view-scroll-down-or-previous-page
    :n "f" #'pdf-view-scroll-up-or-next-page
    :n "r" (cmd! (image-forward-hscroll 10)) ;; left and right movement
-   :n "c" (cmd! (image-backward-hscroll 10)))
+   :n "c" (cmd! (image-backward-hscroll 10))
+  :nm "t" #'evil-collection-pdf-view-next-line-or-next-page
+  :nm "s" #'evil-collection-pdf-view-prev-line-or-prev-page
+   )
+
  ;; ;; Gnus : remap most used functions with 2 characters, g being the prefix
  ;; (:after gnus
  ;;  :map gnus-group-mode-map
@@ -83,10 +88,10 @@
 
  ;; Calendar motion
   (:map calendar-mode-map
-   :nm "r" 'calendar-forward-day
    :nm "c" 'calendar-backward-day
-   :nm "s" 'calendar-forward-week
-   :nm "t" 'calendar-backward-week
+   :nm "t" 'calendar-forward-week
+   :nm "s" 'calendar-backward-week
+   :nm "r" 'calendar-forward-day
   )
 
   ;; Surprisingly overridden
@@ -219,18 +224,32 @@
 ;;-------------------------------------------------------------------------------
 ;; Pop-up menu
 ;;-------------------------------------------------------------------------------
-
-(:leader
+ (:leader
   ;; Switch buffer with space + "«" instead of space + "<"
   "<" nil
   "~" nil
   (:when (featurep! :ui workspaces)
-    :desc "Switch buffer"           "«" #'frog-jump-buffer
-    )
+   ;; Using both: frog for recent, ivy for completion
+   :desc "Switch buffer (frog)"    "«" #'frog-jump-buffer
+   :desc "Switch buffer (ivy)"     "»" #'ivy-switch-buffer
+   )
   (:when (featurep! :ui popup)
    :desc "Toggle last popup"     "ê"    #'+popup/toggle)
-  (:prefix-map ("s" . "search")
-   :desc "Org-rifle (opened files)"                "é" #'helm-org-rifle ; é in reference to evil snipe
-   :desc "Org-rifle (org directory)"               "è" #'helm-org-rifle-org-directory) ; slower
-  )
-)
+  (:prefix-map ("é" . "Org-rifle"); é in reference to evil snipe
+   :desc "Agenda"                  "a" #'helm-org-rifle-agenda-files
+   :desc "Agenda (occur)"          "A" #'helm-org-rifle-occur-agenda-files
+   :desc "Org directories"         "d" #'helm-org-rifle-directories
+   :desc "Org directories (occur)" "D" #'helm-org-rifle-occur-directories
+   :desc "Opened files"            "o" #'helm-org-rifle
+   :desc "Opened files (occur)"    "O" #'helm-org-rifle-occur))
+ )
+
+;; Jump with avy
+(setq avy-keys '(?a ?u ?i ?e ?, ?c ?t ?s ?r ?r ?n ?m))
+(after! ace-window
+  (setq aw-keys '(?a ?u ?i ?e ?, ?c ?t ?s ?r ?n)))
+
+(after! frog-menu
+  (setq frog-menu-avy-keys (append (string-to-list "auie,ctsrnm")
+                                   (string-to-list "bépoèdljzw")
+                                   (string-to-list "êàyx.k'qghf"))))

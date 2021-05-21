@@ -1,7 +1,5 @@
 ;;; ~/.doom.d/config.el -*- lexical-binding: t; -*-
 
-
-
 ;; Warning: using emacs daemon + emacsclient -nc lose the highlight. So we need
 ;; to reload the theme each time we start a new emacs.
 ;; SPC h r t (or M-x doom/reload-theme)
@@ -9,21 +7,17 @@
 ;; (setq doom-one-brighter-comments t) ;; We want the comments visible
 
 (setq doom-font (font-spec :family "Source Code Pro" :size 12))
-      ;; doom-unicode-font (font-spec :family "MesloLGS NF" :size 12)
-      ;; doom-variable-pitch-font (font-spec :family "MesloLGS NF")
-      ;; )
-;; (setq doom-unicode-font doom-font)
 
-;; (load! "+exwm") ; Emas as windows manager
 ;; Modules
 (load! "+bepo") ; Adapt to bepo keyboard layout
 (load! "+dired") ; Dired/ranger configuration
+;; (load! "+exwm") ; Emas as windows manager
 (load! "+irc")
 (load! "+mail") ; Mail configuration
-(load! "+org") ; Org configuration
-(load! "+zathura") ; Opening pdf, epub
-;; (load! "+torrents") ; mentor configuration
 (load! "+music") ; mentor configuration
+(load! "+open") ; Opening pdf, movies etc
+(load! "+org") ; Org configuration
+;; (load! "+torrents") ; mentor configuration
 
 ; Stop asking
 (setq large-file-warning-threshold nil)
@@ -52,7 +46,14 @@
   (setq company-idle-delay 0))
 
 ;; Disable spell checking by default
-(remove-hook 'text-mode-hook #'spell-fu-mode)
+(remove-hook! '(org-mode-hook
+                 markdown-mode-hook
+                 TeX-mode-hook
+                 rst-mode-hook
+                 mu4e-compose-mode-hook
+                 message-mode-hook
+                 git-commit-mode-hook)
+               #'flyspell-mode)
 
 (after! eshell
   :config
@@ -65,19 +66,13 @@
   (setq password-cache-expiry 3600) ; for one hour (time in secs)
 )
 
+;; --- Haskell
+(setq haskell-interactive-popup-errors nil)
+
 ;; (after! elfeed
 ;;   :config
 ;;   (setq elfeed-feeds
 ;;         '("https://www.youtube.com/feeds/videos.xml?channel_id=UCJHA_jMfCvEnv-3kRjTCQXw")))
-;; ; No flyspell by default
-;; (remove-hook! '(org-mode-hook
-;;                 markdown-mode-hook
-;;                 TeX-mode-hook
-;;                 rst-mode-hook
-;;                 mu4e-compose-mode-hook
-;;                 message-mode-hook
-;;                 git-commit-mode-hook)
-;;   #'flyspell-mode)
 
 ;; (after! ytdl
 ;;   :config

@@ -1,14 +1,13 @@
 ;; -*- no-byte-compile: t; -*-
 ;;; ~/.doom.d/packages.el
+;;;
 
-(package! emms) ;; Manage music
-(package! ess) ;; R in emacs
+(package! ebdb) ;; mangae contacts
 (package! evil-numbers) ; Increment numbers as in vim
-(package! exwm) ;; Emacs as a windows manager
-(package! fish-completion) ; For eshell
-(package! gist) ; Github gist
+(package! frog-jump-buffer) ; switch buffers, fast
+(package! golden-ratio)
+(package! helm-org-rifle)
 (package! keychain-environment) ;; Avoid typing SSH passphrase
-(package! ob-async) ; Execute code block asynchronsly
 (package! openwith) ;; open PDF automatically
 (package! org-chef) ; Get recipes in org mode
 (package! org-ml) ; Functionnal programming in org
@@ -18,10 +17,5 @@
 (package! projectile-ripgrep) ; I like ripgrep
 (package! frog-jump-buffer) ; switch buffers, fast
 (package! mode-line-stats :recipe (:host nil :repo "https://github.com/Idorobots/mode-line-stats")) ;; does not work
-;; (package! simple-mpc) ;
 (package! yasnippet-snippets) ; List of snippets
-
-;;; Examples:
-
-;; (package! another-package :recipe (:fetcher github :repo "username/repo"))
-;; (package! builtin-package :disable t)
+;; (package! ob-async) ; Execute code block asynchronsly

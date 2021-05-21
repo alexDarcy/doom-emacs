@@ -21,8 +21,6 @@
 
         :completion
         company           ; the ultimate code completion backend
-        ;;helm              ; the *other* search engine for love and life
-        ;;ido               ; the other *other* search engine...
         ivy               ; a search engine for love and life
 
         :ui
@@ -84,15 +82,14 @@
         ;;editorconfig      ; let someone else argue about tabs vs spaces
         ;;ein               ; tame Jupyter notebooks with emacs
         eval              ; run code, run (also, repls)
-        ;;gist              ; interacting with github gists
+        gist              ; interacting with github gists
         (lookup           ; helps you navigate your code and documentation
          +docsets)        ; ...or in Dash docsets locally
         lsp
-        ;;macos             ; MacOS-specific commands
         magit             ; a git porcelain for Emacs
         make              ; run make tasks from Emacs
         pass              ; password manager for nerds
-;;        pdf               ; pdf enhancements
+        pdf               ; pdf enhancements
         ;;prodigy           ; FIXME managing external services & code builders
         ;;rgb               ; creating color strings
         ;;terraform         ; infrastructure as code
@@ -101,24 +98,14 @@
         ;;wakatime
 
         :lang
-        ;;agda              ; types of types of types of types...
-        ;;assembly          ; assembly for fun or debugging
-        ;;cc                ; C/C++/Obj-C madness
-        ;;clojure           ; java with a lisp
         common-lisp         ; Sly instead of slime as an IDE
-        ;;coq               ; proofs-as-programs
-        ;;crystal           ; ruby at the speed of c
-        ;;csharp            ; unity, .NET, and mono shenanigans
         data              ; config/data formats
-        ;;erlang            ; an elegant language for a more civilized age
-        ;;elixir            ; erlang done right
-        ;;elm               ; care for a cup of TEA?
         emacs-lisp        ; drown in parentheses
-        ;;ess               ; emacs speaks statistics
+        ess               ; emacs speaks statistics
         ;;fsharp           ; ML stands for Microsoft's Language
         ;;go                ; the hipster dialect
         ;; (haskell +intero) ; a language that's lazier than I am
-        (haskell +lsp) ; Fails to build haskell-language-server in  freebsd with stack (404 error)
+        (haskell +lsp) ;
         ;;hy                ; readability of scheme w/ speed of python
         ;;idris             ;
         ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
@@ -131,7 +118,6 @@
         markdown          ; writing docs for people to ignore
         ;;nim               ; python + lisp at the speed of c
         ;;nix               ; I hereby declare "nix geht mehr!"
-        ;;ocaml             ; an objective camel
         :lang
         (org              ; organize your plain life in plain text
          ;+flyspell
@@ -139,34 +125,21 @@
          +ipython         ; ipython support for babel
          +pandoc          ; pandoc integration into org's exporter
          +present)        ; using Emacs for presentations
-        ;;perl              ; write code no one else can comprehend
-        ;;php               ; perl's insecure younger brother
-        ;;plantuml          ; diagrams for confusing people more
-        ;;purescript        ; javascript, but functional
         ;;python            ; beautiful is better than ugly
-        ;;qt                ; the 'cutest' gui framework ever
-        ;;racket            ; a DSL for DSLs
-        ;;rest              ; Emacs as a REST client
-        ;;ruby              ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-        ;;rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-        ;;scala             ; java, but good
-        sh                ; she sells {ba,z,fi}sh shells on the C xor
-        ;;solidity          ; do you need a blockchain? No.
-        ;;swift             ; who asked for emoji variables?
+        (sh +fish)          ; she sells {ba,z,fi}sh shells on the C xor
         ;;terra             ; Earth and Moon in alignment for performance.
         ;;web               ; the tubes
         ;;vala              ; GObjective-C
 
         :email
-        ;mu4e       ; WIP
         notmuch             ; WIP
-        ;;(wanderlust +gmail) ; WIP
 
         ;; Applications are complex and opinionated modules that transform Emacs
         ;; toward a specific purpose. They may have additional dependencies and
         ;; should be loaded late.
         :app
         calendar
+        emms
         irc              ; how neckbeards socialize
         (rss +org)        ; emacs as an RSS reader
         ;;twitter           ; twitter client https://twitter.com/vnought
