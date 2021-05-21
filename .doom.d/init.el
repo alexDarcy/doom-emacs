@@ -126,7 +126,7 @@
          +pandoc          ; pandoc integration into org's exporter
          +present)        ; using Emacs for presentations
         ;;python            ; beautiful is better than ugly
-        sh                ; she sells {ba,z,fi}sh shells on the C xor
+        (sh +fish)          ; she sells {ba,z,fi}sh shells on the C xor
         ;;terra             ; Earth and Moon in alignment for performance.
         ;;web               ; the tubes
         ;;vala              ; GObjective-C
