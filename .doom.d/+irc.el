@@ -40,13 +40,12 @@
                      :sasl-username ,(+pass-get-user "irc/freenode.net")
                      :sasl-password (lambda (&rest _) (+pass-get-secret "irc/freenode.net"))
                      :channels ("#freebsd" "#haskell")))
-  (set-irc-server! "myanonamouse.net"
+  (set-irc-server! "irc.scratch-network.net"
                    `(:tls t
                      :port 6697
-                     :nick "fitzwillydarcy"
-                     :sasl-username ,(+pass-get-user "irc/myanonamouse.net")
-                     :sasl-password (lambda (&rest _) (+pass-get-secret "irc/myanonamouse.net"))
-                     :channels (" #anonamouse.net")))
+                     :nick "WickedSteed"
+                     :sasl-username ,(+pass-get-user "irc/red")
+                     :sasl-password (lambda (&rest _) (+pass-get-secret "irc/red"))))
   ;; no joins, quits etc
   (setq circe-reduce-lurker-spam t)
   )
