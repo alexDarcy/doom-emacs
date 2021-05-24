@@ -6,12 +6,22 @@
 ;;   (setq ranger-deer-show-details nil))
 (after! dired
   :config
- ; Clean view by default
+                                        ; Clean view by default
   (add-hook! 'dired-mode-hook
-    (dired-hide-details-mode )))
+    (dired-hide-details-mode ))
+
+ ;; copy file contexnts on the current line to clipboard
+ ;; emulation xclip in emacs
+ ;; Thanks to https://emacs.stackexchange.com/questions/64982/copy-a-file-content-to-clipboard-with-dired/64984#64984
+  (defun xclip()
+    (interactive)
+    (save-window-excursion
+      (dired-find-file)
+      (kill-new (buffer-substring-no-properties (point-min) (point-max)))
+      (kill-current-buffer))))
 
 
-; Default shell actions (we use ranger so we lost the defaults
+                                        ; Default shell actions (we use ranger so we lost the defaults
 (after! dired-x
   ;; :when (featurep! +ranger)
   :config
@@ -34,7 +44,7 @@
             ("\\.html?\\'" ,cmd)
             ("\\.md\\'" ,cmd)
             )))
-  ; Hide dot files
+                                        ; Hide dot files
   (setq dired-omit-files (concat dired-omit-files "\\|^\\..+$"))
-  ;
+                                        ;
   )
